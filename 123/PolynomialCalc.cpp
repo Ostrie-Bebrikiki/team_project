@@ -12,10 +12,12 @@ void PolynomialMenu()
 		printf_s("4: Умножение на число\n");
 		printf_s("5: Производная\"\n");
 		printf_s("6: Деление\n");
-		bool flag = false;
+		printf_s("0: Выйти\n");
 		do {
-			printf_s("Выбрано: "); getc
-		} while
+			printf_s("Выбрано: "); choose = _getche();
+		} while (choose < '0' || choose > '6');
+
+		switch (choose)
 	} while (choose != '0');
 }
 
