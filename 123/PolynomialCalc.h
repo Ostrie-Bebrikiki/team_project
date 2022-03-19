@@ -3,9 +3,9 @@
 //Калькулятор многочленов
 
 void PolynomialMenu(); //Меню
-double PolynomialSum(); //Сложение
-double PolynomialSubstraction(); //Вычитание
-double PolynomialMulti(); //Умножение
-double PolynomialMultiNumber(); //Умножение на число
-double PolynomialDerivative(); //Производная
-double PolynomalDivision(); //Деление	
+void PolynomialSum(); //Сложение
+void PolynomialSubstraction(); //Вычитание
+void PolynomialMulti(); //Умножение
+void PolynomialMultiNumber(); //Умножение на число
+void PolynomialDerivative(); //Производная
+void PolynomialDivision(); //Деление	

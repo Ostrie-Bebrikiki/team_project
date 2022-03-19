@@ -23,9 +23,9 @@ int main() {
 		switch (s) {
 			case '1': ;
 			case '2': ;
-			case '3': ;
+			case '3': menu_kombinatorika();
 			case '4': menu_ver();
-			case '5': ;
+			case '5': PolynomialMenu();
 			case '6': ;
 		}
 		cout << endl << "Продолжить?";
