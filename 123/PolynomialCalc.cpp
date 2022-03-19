@@ -55,6 +55,7 @@ void PolynomialSum()
 		printf_s("¬ведите степень второго многочлена: "); scanf_s("%d", &slag2.n);
 		if (slag1.n <= 0 || slag2.n <= 0) system("cls");
 	} while (slag1.n <= 0 || slag2.n <= 0);
+
 }
 
 void PolynomialSubstraction()
