@@ -21,10 +21,13 @@
   <ItemGroup>
     <ClInclude Include="bebra.h" />
     <ClInclude Include="header_ver.h" />
+    <ClInclude Include="kombinatorika.h" />
     <ClInclude Include="PolynomialCalc.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="kombinatorika.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PolynomialCalc.cpp" />
     <ClCompile Include="veroyatnosti.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
