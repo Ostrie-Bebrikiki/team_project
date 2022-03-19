@@ -1,7 +1,5 @@
-#include <conio.h>
-#include <iostream>
 #include "header_ver.h"
-using namespace std;
+
 
 void menu_ver() {
 	char s;
@@ -25,4 +23,14 @@ void menu_ver() {
 		if (s == 'n' || s == 'ò') break;
 		system("cls");
 	}
+}
+
+void ver() {
+
+}
+void disp() {
+
+}
+void MathAwait() {
+
 }

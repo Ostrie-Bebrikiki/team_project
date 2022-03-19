@@ -1,6 +1,7 @@
 #pragma once
 #ifndef header_ver
 #define header_ver
-void ver();
-
+#include <conio.h>
+#include <iostream>
+using namespace std;
 #endif
