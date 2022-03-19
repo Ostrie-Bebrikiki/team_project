@@ -28,7 +28,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mathAwait.cpp" />
     <ClCompile Include="ver.cpp" />
-    <ClCompile Include="veroyatnosti.cpp" />
+    <ClCompile Include="menu_veroyatnosti.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -16,7 +16,7 @@ void menu_ver() {
 		cout << endl;
 
 		switch (s) {
-		case '1':;
+		case '1':ver();
 		case '2':;
 		case '3':;
 		}

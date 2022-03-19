@@ -29,7 +29,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="veroyatnosti.cpp">
+    <ClCompile Include="menu_veroyatnosti.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
     <ClCompile Include="ver.cpp">
