@@ -4,8 +4,9 @@
 void PolynomialMenu()
 {
 	char choose;
+	printf_s("\tКАЛЬКУЛЯТОР МНОГОЧЛЕНОВ\n");
 	do {
-		printf_s("\tКАЛЬКУЛЯТОР МНОГОЧЛЕНОВ\nВыберите действие:\n");
+		printf_s("Выберите действие:\n");
 		printf_s("1: Сложение\n");
 		printf_s("2: Вычитание\n");
 		printf_s("3: Умножение\n");
@@ -25,6 +26,7 @@ void PolynomialMenu()
 		case '5': PolynomialDerivative(); break;
 		case '6': PolynomialDivision(); break;
 		case '0': break;
+		default: break;
 		}
 	} while (choose != '0');
 }
@@ -61,5 +63,5 @@ void PolynomialDerivative()
 void PolynomialDivision()
 {
 	printf_s("Введите первый многочлен: ");
-	printf_s("Введите вто")
+	printf_s("Введите второй многочлен: ");
 }
