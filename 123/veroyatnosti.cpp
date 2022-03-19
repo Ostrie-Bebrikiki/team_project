@@ -21,7 +21,7 @@ void menu_ver() {
 	while (true) {
 		while (true) {
 			system("cls");
-			cout << "КАЛЬКУЛЯТОР ТЕОРИИ ВЕРОЯТНОСТИ И МАТ. СТАТИСТИКИ" << endl<<endl;
+			//cout <<
 			cout << "Выберите действие" << endl << "1 - Вычислить вероятность m/n" << endl << "2 - Вычислить дисперсию для дискретного распределения величин"
 				<< endl << "3 - Вычислить мат. ожидание для дискретного распределения величин" << endl <<"4 - Выход в главное меню" << endl << '>';
 			s = _getche();
@@ -46,15 +46,11 @@ void menu_ver() {
 
 void ver() {
 	double m, n;
+	input_d(m, "Введите m");
 	while (true) {
-		input_d(m, "Введите m");
-		while (true) {
-			input_d(n, "Введите n");
-			if (n > 0) break;
-			else cout << "n должна быть больше 0\n";
-		}
-		if (m > n) cout << "m должна быть меньше n\n";
-		else break;
+		input_d(n, "Введите n");
+		if (n > 0) break;
+		else cout << "n должна быть больше 0\n";
 	}
 	cout << "Ответ: " << m / n;
 }
