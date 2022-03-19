@@ -4,8 +4,9 @@
 void PolynomialMenu()
 {
 	char choose;
+	printf_s("\t јЋ№ ”Ћя“ќ– ћЌќ√ќ„Ћ≈Ќќ¬\n");
 	do {
-		printf_s("\t јЋ№ ”Ћя“ќ– ћЌќ√ќ„Ћ≈Ќќ¬\n¬ыберите действие:\n");
+		printf_s("¬ыберите действие:\n");
 		printf_s("1: —ложение\n");
 		printf_s("2: ¬ычитание\n");
 		printf_s("3: ”множение\n");
@@ -24,31 +25,43 @@ void PolynomialMenu()
 		case '4': PolynomialMultiNumber(); break;
 		case '5': PolynomialDerivative(); break;
 		case '6': PolynomialDivision(); break;
-		case '0': break;
+		case '0': return;
+		default: break;
 		}
 	} while (choose != '0');
 }
 
 void PolynomialSum()
 {
+	printf_s("¬ведите первый многочлен: ");
+	printf_s("¬ведите второй многочлен: ");
 }
 
 void PolynomialSubstraction()
 {
+	printf_s("¬ведите первый многочлен: ");
+	printf_s("¬ведите второй многочлен: ");
 }
 
 void PolynomialMulti()
 {
+	printf_s("¬ведите первый многочлен: ");
+	printf_s("¬ведите второй многочлен: ");
 }
 
 void PolynomialMultiNumber()
 {
+	printf_s("¬ведите многочлен: ");
+	printf_s("¬ведите число: ");
 }
 
 void PolynomialDerivative()
 {
+	printf_s("¬ведите многочлен: ");
 }
 
 void PolynomialDivision()
 {
+	printf_s("¬ведите первый многочлен: ");
+	printf_s("¬ведите второй многочлен: ");
 }
