@@ -2,6 +2,8 @@
 //Ответственный - Коростелев
 //Калькулятор многочленов
 
+
+
 void PolynomialMenu(); //Меню
 void PolynomialSum(); //Сложение
 void PolynomialSubstraction(); //Вычитание
