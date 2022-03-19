@@ -1,6 +1,20 @@
 #include "header_ver.h"
 
-
+void input(int& a, string str) {
+	while (true) {
+		std::cout << str<<": ";
+		std::cin >> a;
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore(32767, '\n');
+			std::cout << "Îøèáêà ââîäà" << std::endl;
+		}
+		else {
+			break;
+		}
+	}
+}
 void menu_ver() {
 	char s;
 	while (true) {
