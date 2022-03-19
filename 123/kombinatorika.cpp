@@ -4,7 +4,7 @@
 void placement_with();
 void placement_without();
 void combination_with();
-void combination_withot();
+void combination_without();
 void transposition();
 
 void menu_kombinatorika()
