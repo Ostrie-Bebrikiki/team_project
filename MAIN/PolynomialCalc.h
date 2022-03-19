@@ -8,4 +8,4 @@ double PolynomialSubstraction(); //Вычитание
 double PolynomialMulti(); //Умножение
 double PolynomialMultiNumber(); //Умножение на число
 double PolynomialDerivative(); //Производная
-double PolynomalDivision(); //Деление
+double PolynomalDivision(); //Деление	
