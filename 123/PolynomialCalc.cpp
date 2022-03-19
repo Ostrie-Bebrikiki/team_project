@@ -4,8 +4,9 @@
 void PolynomialMenu()
 {
 	char choose;
-	printf_s("\tКАЛЬКУЛЯТОР МНОГОЧЛЕНОВ\n");
+	bool flag = false;
 	do {
+		printf_s("\tКАЛЬКУЛЯТОР МНОГОЧЛЕНОВ\n");
 		printf_s("Выберите действие:\n");
 		printf_s("1: Сложение\n");
 		printf_s("2: Вычитание\n");
@@ -16,7 +17,12 @@ void PolynomialMenu()
 		printf_s("0: Выйти\n");
 		do {
 			printf_s("Выбрано: "); choose = _getche();
-		} while (choose < '0' || choose > '6');
+			if (choose < '0' || choose > '6') {
+				system("cls");
+			}
+		} while (flag == false);
+
+		system("cls");
 
 		switch (choose) {
 		case '1': PolynomialSum(); break;
@@ -33,35 +39,47 @@ void PolynomialMenu()
 
 void PolynomialSum()
 {
+	printf_s("\tСЛОЖЕНИЕ МНОГОЧЛЕНОВ\n");
 	printf_s("Введите первый многочлен: ");
 	printf_s("Введите второй многочлен: ");
+	system("cls");
 }
 
 void PolynomialSubstraction()
 {
+	printf_s("\tВЫЧИТАНИЕ МНОГОЧЛЕНОВ\n");
 	printf_s("Введите первый многочлен: ");
 	printf_s("Введите второй многочлен: ");
+	system("cls");
 }
 
 void PolynomialMulti()
 {
+	printf_s("\tУМНОЖЕНИЕ МНОГОЧЛЕНОВ\n");
 	printf_s("Введите первый многочлен: ");
 	printf_s("Введите второй многочлен: ");
+	system("cls");
 }
 
 void PolynomialMultiNumber()
 {
+	printf_s("\tУМНОЖЕНИЕ МНОГОЧЛЕНА НА ЧИСЛО\n");
 	printf_s("Введите многочлен: ");
 	printf_s("Введите число: ");
+	system("cls");
 }
 
 void PolynomialDerivative()
 {
+	printf_s("\tПРОИЗВОДНАЯ ОТ МНОГОЧЛЕНА\n");
 	printf_s("Введите многочлен: ");
+	system("cls");
 }
 
 void PolynomialDivision()
 {
+	printf_s("\tДЕЛЕНИЕ МНОГОЧЛЕНОВ\n");
 	printf_s("Введите первый многочлен: ");
 	printf_s("Введите второй многочлен: ");
+	system("cls");
 }
