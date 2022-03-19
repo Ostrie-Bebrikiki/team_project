@@ -1,6 +1,6 @@
 #include "header_ver.h"
 
-void input(int& a, string str) {
+void input_d(double& a, string str) {
 	while (true) {
 		std::cout << str<<": ";
 		std::cin >> a;
@@ -15,6 +15,7 @@ void input(int& a, string str) {
 		}
 	}
 }
+
 void menu_ver() {
 	char s;
 	while (true) {
@@ -40,11 +41,19 @@ void menu_ver() {
 }
 
 void ver() {
-
+	double m, n;
+	input_d(m, "¬ведите m");
+	while (true) {
+		input_d(n, "¬ведите n");
+		if (n > 0) break;
+		else cout << "n должна быть больше 0";
+	}
 }
+
 void disp() {
 
 }
+
 void MathAwait() {
 
 }
