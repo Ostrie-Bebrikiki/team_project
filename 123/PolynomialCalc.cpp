@@ -4,6 +4,7 @@
 void PolynomialMenu()
 {
 	char choose;
+	bool flag = false;
 	do {
 		printf_s("\tÊÀËÜÊÓË‗ÒÎÐ ÌÍÎÃÎ×ËÅÍÎÂ\n");
 		printf_s("Âûבונטעו הויסעגטו:\n");
@@ -16,7 +17,10 @@ void PolynomialMenu()
 		printf_s("0: Âûיעט\n");
 		do {
 			printf_s("Âûבנאםמ: "); choose = _getche();
-		} while (choose < '0' || choose > '6');
+			if (choose < '0' || choose > '6') {
+				system("cls");
+			}
+		} while (flag == false);
 
 		system("cls");
 
