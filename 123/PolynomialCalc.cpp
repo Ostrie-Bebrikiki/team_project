@@ -82,4 +82,5 @@ void PolynomialDivision()
 	printf_s("¬ведите первый многочлен: ");
 	printf_s("¬ведите второй многочлен: ");
 	system("cls");
+	return;
 }
