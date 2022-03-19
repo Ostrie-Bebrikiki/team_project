@@ -4,4 +4,8 @@
 #include <conio.h>
 #include <iostream>
 using namespace std;
+
+void ver();
+void disp();
+void MathAwait();
 #endif
