@@ -25,7 +25,7 @@ void PolynomialMenu()
 		case '4': PolynomialMultiNumber(); break;
 		case '5': PolynomialDerivative(); break;
 		case '6': PolynomialDivision(); break;
-		case '0': break;
+		case '0': return;
 		default: break;
 		}
 	} while (choose != '0');
