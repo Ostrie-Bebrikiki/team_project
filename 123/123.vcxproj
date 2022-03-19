@@ -24,11 +24,8 @@
     <ClInclude Include="PolynomialCalc.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dispers.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="mathAwait.cpp" />
-    <ClCompile Include="ver.cpp" />
-    <ClCompile Include="menu_veroyatnosti.cpp" />
+    <ClCompile Include="veroyatnosti.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

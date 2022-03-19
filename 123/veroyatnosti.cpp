@@ -15,8 +15,8 @@ void menu_ver() {
 
 		switch (s) {
 		case '1':ver();
-		case '2':;
-		case '3':;
+		case '2':disp();
+		case '3':MathAwait();
 		}
 		cout << endl << "Продолжить?";
 		s = tolower(_getche());
