@@ -3,6 +3,7 @@
 
 void menu_kombinatorika()
 {
+	system("cls");
 	char cmd;
 
 	printf_s("1 - Размещение с повторениями\n2 - Размещенеие без повторений\n3 - Сочетание с повторением\n4 - Сочетание без повторений\n5 - Перестановки\n0 - Вернуться\n");
@@ -20,7 +21,8 @@ void menu_kombinatorika()
 
 void placement_with()
 {
-
+	system("cls");
+	printf_s("")
 }
 
 void placement_without()
