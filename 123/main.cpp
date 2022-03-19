@@ -29,9 +29,6 @@ int main() {
 			case '6': break;
 			default: break;
 		}
-		cout << endl << "Продолжить?";
-		s = tolower(_getche());
-		if (s == 'n' || s == 'т') break;
 		system("cls");
 	}
 	return 0;

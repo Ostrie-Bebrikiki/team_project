@@ -7,7 +7,7 @@
 
 void menu_ver();
 void PolynomialMenu();
-void menu_kombinatorika();
+int menu_kombinatorika();
 
 using namespace std;
 #endif

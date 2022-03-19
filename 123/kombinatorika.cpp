@@ -7,29 +7,39 @@ void combination_with();
 void combination_without();
 void transposition();
 
-void menu_kombinatorika()
+int menu_kombinatorika()
 {
 	system("cls");
 	char cmd;
-
-	printf_s("1 - Размещение с повторениями\n2 - Размещенеие без повторений\n3 - Сочетание с повторением\n4 - Сочетание без повторений\n5 - Перестановки\n0 - Вернуться\n");
-	cmd = _getche();
-
-	switch(cmd)
+	while (true)
 	{
-	case '1': placement_with(); break;
-	case '2': placement_without(); break;
-	case '3': combination_with(); break;
-	case '4': combination_without(); break;
-	case '5': transposition(); break;
-	case '0': return;
+		while (true)
+		{
+			printf_s("1 - Размещение с повторениями\n2 - Размещенеие без повторений\n3 - Сочетание с повторением\n4 - Сочетание без повторений\n5 - Перестановки\n0 - Вернуться\n");
+			cmd = _getche();
+			if (cmd == '1' || cmd == '2' || cmd == '3' || cmd == '4' || cmd == '0')
+			{
+				break;
+			}
+			system("cls");
+		}
+
+		switch (cmd)
+		{
+		case '1': placement_with(); break;
+		case '2': placement_without(); break;
+		case '3': combination_with(); break;
+		case '4': combination_without(); break;
+		case '5': transposition(); break;
+		case '0': return 0;
+		}
 	}
 }
 
 void placement_with()
 {
 	system("cls");
-	int n, k, x;
+	unsigned int n, k, x;
 	char cmd;
 	while (true)
 	{
@@ -60,14 +70,16 @@ void placement_with()
 
 		printf_s("\nОтвет : %d\n", x);
 
-		printf_s("1 - Ещё раз.\n2 - В меню.\n\n? : ");
-
+		printf_s("\n1 - Вернуться в меню.\nЧтобы продолжить нажмите любую кнопку.\n\n? : ");
 		cmd = _getche();
-		if (cmd == '2')
+		if (cmd == '1')
 		{
-			break;
 			system("cls");
+			printf_s("\n");
+			return;
 		}
+
+		system("cls");
 	}
 }
 
