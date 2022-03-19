@@ -1,6 +1,12 @@
 #include "kombinatorika.h"
 #include "bebra.h"
 
+void placement_with();
+void placement_without();
+void combination_with();
+void combination_withot();
+void transposition();
+
 void menu_kombinatorika()
 {
 	system("cls");
