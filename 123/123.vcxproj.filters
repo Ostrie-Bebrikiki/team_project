@@ -15,8 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PolynomialCalc.h">
-      <Filter>Исходные файлы</Filter>
+    <ClInclude Include="bebra.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
