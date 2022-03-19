@@ -4,8 +4,9 @@
 void PolynomialMenu()
 {
 	char choose;
+	printf_s("\t јЋ№ ”Ћя“ќ– ћЌќ√ќ„Ћ≈Ќќ¬\n");
 	do {
-		printf_s("\t јЋ№ ”Ћя“ќ– ћЌќ√ќ„Ћ≈Ќќ¬\n¬ыберите действие:\n");
+		printf_s("¬ыберите действие:\n");
 		printf_s("1: —ложение\n");
 		printf_s("2: ¬ычитание\n");
 		printf_s("3: ”множение\n");
@@ -24,37 +25,43 @@ void PolynomialMenu()
 		case '4': PolynomialMultiNumber(); break;
 		case '5': PolynomialDerivative(); break;
 		case '6': PolynomialDivision(); break;
-		case '0': break;
+		case '0': return;
+		default: break;
 		}
 	} while (choose != '0');
 }
 
-double PolynomialSum()
+void PolynomialSum()
 {
-	return 0.0;
+	printf_s("¬ведите первый многочлен: ");
+	printf_s("¬ведите второй многочлен: ");
 }
 
-double PolynomialSubstraction()
+void PolynomialSubstraction()
 {
-	return 0.0;
+	printf_s("¬ведите первый многочлен: ");
+	printf_s("¬ведите второй многочлен: ");
 }
 
-double PolynomialMulti()
+void PolynomialMulti()
 {
-	return 0.0;
+	printf_s("¬ведите первый многочлен: ");
+	printf_s("¬ведите второй многочлен: ");
 }
 
-double PolynomialMultiNumber()
+void PolynomialMultiNumber()
 {
-	return 0.0;
+	printf_s("¬ведите многочлен: ");
+	printf_s("¬ведите число: ");
 }
 
-double PolynomialDerivative()
+void PolynomialDerivative()
 {
-	return 0.0;
+	printf_s("¬ведите многочлен: ");
 }
 
-double PolynomialDivision()
+void PolynomialDivision()
 {
-	return 0.0;
+	printf_s("¬ведите первый многочлен: ");
+	printf_s("¬ведите второй многочлен: ");
 }
