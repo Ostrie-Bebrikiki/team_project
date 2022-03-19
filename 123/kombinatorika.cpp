@@ -22,7 +22,6 @@ void menu_kombinatorika()
 void placement_with()
 {
 	system("cls");
-	printf_s("")
 }
 
 void placement_without()
