@@ -29,32 +29,26 @@ void PolynomialMenu()
 	} while (choose != '0');
 }
 
-double PolynomialSum()
+void PolynomialSum()
 {
-	return 0.0;
 }
 
-double PolynomialSubstraction()
+void PolynomialSubstraction()
 {
-	return 0.0;
 }
 
-double PolynomialMulti()
+void PolynomialMulti()
 {
-	return 0.0;
 }
 
-double PolynomialMultiNumber()
+void PolynomialMultiNumber()
 {
-	return 0.0;
 }
 
-double PolynomialDerivative()
+void PolynomialDerivative()
 {
-	return 0.0;
 }
 
-double PolynomialDivision()
+void PolynomialDivision()
 {
-	return 0.0;
 }
