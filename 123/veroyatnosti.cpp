@@ -1,7 +1,5 @@
-#include <conio.h>
-#include <iostream>
 #include "header_ver.h"
-using namespace std;
+
 
 void menu_ver() {
 	char s;
@@ -17,12 +15,22 @@ void menu_ver() {
 
 		switch (s) {
 		case '1':ver();
-		case '2':;
-		case '3':;
+		case '2':disp();
+		case '3':MathAwait();
 		}
 		cout << endl << "Продолжить?";
 		s = tolower(_getche());
 		if (s == 'n' || s == 'т') break;
 		system("cls");
 	}
+}
+
+void ver() {
+
+}
+void disp() {
+
+}
+void MathAwait() {
+
 }
