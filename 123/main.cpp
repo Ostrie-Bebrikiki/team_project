@@ -2,7 +2,6 @@
 #include <conio.h>
 #include <windows.h>
 #include "bebra.h"
-#include "PolynomialCalc.h"
 using namespace std;
 
 int main() {
