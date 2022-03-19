@@ -1,4 +1,5 @@
 #include "PolynomialCalc.h"
+#include "bebra.h"
 
 void PolynomialMenu()
 {
