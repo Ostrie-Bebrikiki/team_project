@@ -20,18 +20,20 @@ void menu_ver() {
 	char s;
 	while (true) {
 		while (true) {
-			cout << "Выберите задачу" << endl << "1 - Вероятность m/n" << endl << "2 - Дисперсия для дискретного распределения величин"
-				<< endl << "3 - Мат. ожидание для дискретного распределения величин" << endl << '>';
+			cout << "Выберите действие" << endl << "1 - Вычислить вероятность m/n" << endl << "2 - Вычислить дисперсию для дискретного распределения величин"
+				<< endl << "3 - Вычислить мат. ожидание для дискретного распределения величин" << "4 - Выход в главное меню" << endl << '>';
 			s = _getche();
-			if (s == '1' || s == '2' || s == '3') break;
+			if (s == '1' || s == '2' || s == '3' || s == '4') break;
 			system("cls");
 		}
 		cout << endl;
 
 		switch (s) {
-		case '1':ver();
-		case '2':disp();
-		case '3':MathAwait();
+		case '1':ver(); break;
+		case '2':disp(); break;
+		case '3':MathAwait(); break;
+		case '4': return;
+		default: break;
 		}
 		cout << endl << "Продолжить?";
 		s = tolower(_getche());
