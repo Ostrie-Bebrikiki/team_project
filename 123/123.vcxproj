@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bebra.h" />
+    <ClInclude Include="PolynomialCalc.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
