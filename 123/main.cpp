@@ -21,12 +21,13 @@ int main() {
 		cout << endl;
 		
 		switch (s) {
-			case '1': ;
-			case '2': ;
-			case '3': menu_kombinatorika();
-			case '4': menu_ver();
-			case '5': PolynomialMenu();
-			case '6': ;
+			case '1':  break;
+			case '2':  break;
+			case '3': menu_kombinatorika(); break;
+			case '4': menu_ver(); break;
+			case '5': PolynomialMenu(); break;
+			case '6': break;
+			default: break;
 		}
 		cout << endl << "Продолжить?";
 		s = tolower(_getche());
