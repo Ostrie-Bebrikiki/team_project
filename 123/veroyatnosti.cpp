@@ -46,8 +46,9 @@ void ver() {
 	while (true) {
 		input_d(n, "¬ведите n");
 		if (n > 0) break;
-		else cout << "n должна быть больше 0";
+		else cout << "n должна быть больше 0\n";
 	}
+	cout << "ќтвет: " << m / n;
 }
 
 void disp() {
