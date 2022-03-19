@@ -2,7 +2,10 @@
 //Ответственный - Коростелев
 //Калькулятор многочленов
 
-
+struct Polynomial {
+	double *c;
+	int n;
+};
 
 void PolynomialMenu(); //Меню
 void PolynomialSum(); //Сложение
