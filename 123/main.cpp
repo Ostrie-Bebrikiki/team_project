@@ -7,26 +7,27 @@ int main() {
 	SetConsoleOutputCP(1251);
 	SetConsoleCP(1251);
 	setlocale(LC_ALL, "");
-	char s, sd;
-	int n = 0, m = 0;
+	char s;
 
 	while (true) {
 		while (true) {
-			cout << "Выберите вариант заполнения массива" << endl << "1 - 1 способ(выделение памяти под весь массив сразу)" << endl << "2 - 2 способ(массив указателей)" << endl << '>';
+			cout << "Выберите вид калькулятора" << endl << "1 - Матричный"<< endl << "2 - Обыкновенных дробей" 
+				<< endl << "3 - Формул комбинаторики" << endl << "4 - Теории вероятностей и мат. статистики" << endl
+				<<"5 - Многочленов"<< endl << "6 - Работа с фунциями" << endl << '>';
 			s = _getche();
-			if (s == '1' || s == '2') break;
+			if (s == '1' || s == '2' || s == '3' || s == '4' || s == '5' || s == '6') break;
 			system("cls");
 		}
 		cout << endl;
-		while (true) {
-			cout << "Выберите номер задания" << endl << "1 - Задание №1" << endl << "2 - Задание №2" << endl << '>';
-			sd = _getche();
-			if (sd == '1' || sd == '2') break;
-			system("cls");
+		
+		switch (s) {
+			case '1': ;
+			case '2': ;
+			case '3': ;
+			case '4': ;
+			case '5': ;
+			case '6': ;
 		}
-
-
-
 		cout << endl << "Продолжить?";
 		s = tolower(_getche());
 		if (s == 'n' || s == 'т') break;
