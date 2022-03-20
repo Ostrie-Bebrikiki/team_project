@@ -1,6 +1,7 @@
 // Ответственный - Скатенок Илья
-
+#include "bebra.h"
 #include "FractionCalcHeader.h"
+
 void MenuFraction()
 {
     setlocale(LC_ALL, "Russian");
@@ -121,7 +122,7 @@ int IsNullFraction(double numerator, double denumerator)
 
 int CheckError(string fraction)
 {
-    int ERROR = 0;
+    int error = 0;
     int CountSlash = 0;
     int CountPoint = 0;
 
@@ -129,7 +130,7 @@ int CheckError(string fraction)
         {
             if (isspace(fraction[i]) || isalpha(fraction[i]) || (ispunct(fraction[i]) && fraction[i] != '/' && fraction[i] != ','))
             {
-                ERROR = 1;
+                error = 1;
                 break;
             }
             if (fraction[i] == '/')
@@ -139,7 +140,7 @@ int CheckError(string fraction)
         }
         if (CountSlash != 1)
         {
-            ERROR = 1;
+            error = 1;
         }
     int j = 0;
     while (j < fraction.length())
@@ -152,23 +153,23 @@ int CheckError(string fraction)
         {
             if (CountPoint > 1)
             {
-                ERROR = 1;
+                error = 1;
                 break;
             }
             CountPoint = 0;
         }
         if (fraction[0] == '/' || fraction[fraction.length()] == '/')
         {
-            ERROR = 1;
+            error = 1;
         }
         j++;
     }
-    if (ERROR == 1)
+    if (error == 1)
     {
         cout << "Совершена ошибка при вводе формулы. Проверьте ввод." << endl;
     }
 
-    return ERROR;
+    return error;
 }
 
 
@@ -196,7 +197,7 @@ void EnterFraction(string fraction, double* Nums, int *nums_array)
             {
                 i++;
             }
-            if (tmpi != i)
+            if (tmpi != i && *nums_array < 4)
             {
                 Nums[*nums_array] = stod(fraction.substr(tmpi, i--));
                 (*nums_array)++;

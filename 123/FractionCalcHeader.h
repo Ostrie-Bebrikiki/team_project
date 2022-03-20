@@ -1,13 +1,7 @@
 // Ответственный - Скатенок Илья
 #pragma once
-#include <iostream>
-#include <clocale>
-#include <string>
-#include <cmath>
-#include <conio.h>
-using namespace std;
-
-
+#ifndef FractionCalcHeader
+#define FractionCalcHeader
 
 int CheckError(string fraction);
 
@@ -23,8 +17,8 @@ int IsNullFraction(double numerator, double denumerator);
 void Sokr(double a, double b);
 
 void Sravn(double Chisl, double Znamen, double Chisl2, double Znamen2);
-//
+
 
 int FindMaxDeviver(int a, int b);
 
-
+#endif FractionCalcHeader

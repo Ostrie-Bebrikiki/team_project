@@ -1,8 +1,8 @@
-#pragma once
 //Матричный калькулятор (Кривоносиков Александр)
-#include <iostream>
-#include <locale.h>
-using namespace std;
+#pragma once
+
+#ifndef MatrixCaulculatorHeader
+#define MatrixCaulculatorHeader
 
 void Enter(int& n, int& m);
 void SetMatrix(int n, int m, double** A);
@@ -16,3 +16,5 @@ void MultiplMatrix(int n, int m, double** A);
 void MultiplNumber(int n, int m, double** A);
 void SummNumber(int n, int m, double** A);
 void inversionMatrix(double** A, int n);
+
+#endif MatrixCaulculatorHeader
