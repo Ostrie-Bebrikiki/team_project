@@ -6,6 +6,7 @@ void placement_with();
 void placement_without();
 void combination_with();
 void combination_without();
-void transposition();
+void transposition_without();
+void transposition_with();
 
 #endif
