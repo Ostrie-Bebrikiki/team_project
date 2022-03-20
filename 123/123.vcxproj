@@ -19,12 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Downloads\Telegram Desktop\MatrixCaulculator-Header.h" />
     <ClInclude Include="bebra.h" />
     <ClInclude Include="header_ver.h" />
     <ClInclude Include="kombinatorika.h" />
     <ClInclude Include="PolynomialCalc.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Downloads\Telegram Desktop\MatrixCalculator-Functions.cpp" />
     <ClCompile Include="kombinatorika.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PolynomialCalc.cpp" />
