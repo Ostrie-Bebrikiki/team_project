@@ -2,7 +2,7 @@
 
 double f(char ch, double x, double a, double b, double c, double d) {
 	switch (ch) {
-	case '2': return a * pow(x, (float) b) + c;
+	case '2': return a * pow(x, b) + c;
 	case '3': return a * pow(b, c * x) + d;
 	case '4': return a * log(b * x) + c;
 	case '5': return a * sin(b * x + c) + d;
@@ -35,7 +35,6 @@ void menu_Func() {
 			if (s == '0' || s == '1' || s == '2' || s == '3' || s == '4') break;
 			system("cls");
 		}
-		cout << pow(3, 3.2);
 		if (s == '0') return;
 		cout << endl;
 		choose(ch);
@@ -67,7 +66,11 @@ void integral(char ch, double a, double b, double c, double d) {
 	while (true) {
 		input_d(D1, "Введите левую границу");
 		input_d(D2, "Введите правую границу");
+		if (D1 == 0.0f && D2 == 0.0f) return;
 		if (D2 < D1) cout << "Левая граница не может быть больше правой" << endl;
+		else if(ch == '2' && D1 < 0 && double((int)b) != b) cout << "Нельзя найти интеграл при границе меньше нуля и нецелой степенью\nДля выхода введите 0 0\n";
+		else if(ch == '3' && b < 0 && (double((int)c*D1) != c*D1 || double((int)c * D2) != c * D2)) cout << "Нельзя найти интеграл при b < 0 и нечетном c*x\nДля выхода введите 0 0\n";
+		else if(ch == '4' && D1 <= 0) cout << "Нельзя найти интеграл при границе меньше либо равной нулю\nДля выхода введите 0 0\n";
 		else break;
 	}
 	if (ch != '1') {
@@ -89,7 +92,6 @@ void integral(char ch, double a, double b, double c, double d) {
 			sum = f(ch, D1, a, b, c, d) + 4 * sum4 + 2 * sum2 - f(ch, D2, a, b, c, d);
 			I = I1;
 			I1 = (h / 3) * sum;
-			cout << I1 << ' ';
 		}
 		cout << "Ответ: " << I1;
 	}
