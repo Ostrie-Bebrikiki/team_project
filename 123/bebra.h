@@ -10,6 +10,7 @@ void MenuMatrix();
 void menu_ver();
 void PolynomialMenu();
 int menu_kombinatorika();
+void menu_Func();
 
 using namespace std;
 #endif
