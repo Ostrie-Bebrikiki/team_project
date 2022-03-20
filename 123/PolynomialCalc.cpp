@@ -1,6 +1,9 @@
 #include "PolynomialCalc.h"
 #include "bebra.h"
 
+//Функции калькулятора многочленов
+//Ответственный - Коростелев
+
 void PolynomialMenu()
 {
 	char choose;
@@ -51,11 +54,41 @@ void PolynomialSum()
 	Polynomial slag1, slag2;
 	do {
 		printf_s("\tСЛОЖЕНИЕ МНОГОЧЛЕНОВ\n");
-		printf_s("Введите степень первого многочлена: "); scanf_s("%d", &slag1.n);
+		printf_s("Введите степень первого многочлена: "); scanf_s("%d", &slag1.n); // Запрос степеней многочленов
 		printf_s("Введите степень второго многочлена: "); scanf_s("%d", &slag2.n);
 		if (slag1.n <= 0 || slag2.n <= 0) system("cls");
 	} while (slag1.n <= 0 || slag2.n <= 0);
 
+	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
+	for (int i = slag1.n; i >= 0; i--) {
+		printf_s("c%d = ", i); scanf_s("%lf", &slag1.c[i]);
+	}
+	printf_s("Введите константы второго многочлена: \n");
+	for (int i = slag2.n; i >= 0; i--) {
+		printf_s("c%d = ", i); scanf_s("%lf", &slag2.c[i]);
+	}
+
+	printf_s("Первый многочлен: "); // Вывод первого многочлена
+	printf_s("%.3lfx^%d", slag1.c[slag1.n], slag1.n);
+	for (int i = slag1.n - 1; i >= 2; i--) {
+		if (slag1.c[i] >= 0) printf_s("+%.3lfx^%d", slag1.c[i], i);
+		else printf_s("%.3lfx^%d", slag1.c[i], i);
+	}
+	if (slag2.c[1] >= 0) printf_s("+%.3lfx", slag2.c[1]); //Для x^1
+	else printf_s("%.3lfx^%d", slag2.c[1]);
+	if (slag1.c[0] >= 0) printf_s("+%lf\n", slag1.c[0]); //Для x^0
+	else printf_s("%.3lf\n", slag1.c[0]);
+
+	printf_s("Второй многочлен: "); // Вывод первого многочлена
+	printf_s("%.3lfx^%d", slag2.c[slag2.n], slag2.n);
+	for (int i = slag2.n - 1; i >= 2; i--) {
+		if (slag2.c[i] >= 0) printf_s("+%.3lfx^%d", slag2.c[i], i);
+		else printf_s("%.3lfx^%d", slag2.c[i], i);
+	}
+	if (slag2.c[1] >= 0) printf_s("+%.3lfx", slag2.c[1]); //Для x^1
+	else printf_s("%.3lfx", slag2.c[1]);
+	if (slag2.c[0] >= 0) printf_s("+%.3lf\n", slag2.c[0]); //Для x^0
+	else printf_s("%.3lf\n", slag2.c[0]);
 }
 
 void PolynomialSubstraction()
