@@ -20,13 +20,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bebra.h" />
+    <ClInclude Include="FractionCalcHeader.h" />
     <ClInclude Include="Functions.h" />
     <ClInclude Include="header_ver.h" />
     <ClInclude Include="kombinatorika.h" />
-    <ClInclude Include="MatrixCaulculator-Header.h" />
+    <ClInclude Include="MatrixCaulculatorHeader.h" />
     <ClInclude Include="PolynomialCalc.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FractionCalc.cpp" />
     <ClCompile Include="Fucktions.cpp" />
     <ClCompile Include="kombinatorika.cpp" />
     <ClCompile Include="main.cpp" />

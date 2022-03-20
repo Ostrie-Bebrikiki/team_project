@@ -1,3 +1,4 @@
+// Ответственный - Крупеня Александр
 #include "kombinatorika.h"
 #include "bebra.h"
 

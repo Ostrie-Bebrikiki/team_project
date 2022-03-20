@@ -1,3 +1,4 @@
+// Ответственный - Крупеня Александр
 #pragma once
 #ifndef kombinatorika
 #define kombinatorika

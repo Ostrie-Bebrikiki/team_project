@@ -1,5 +1,6 @@
 //Матричный калькулятор (Кривоносиков Александр)
-#include "MatrixCaulculator-Header.h"
+#include "MatrixCaulculatorHeader.h"
+#include "bebra.h"
 
 void MenuMatrix()
 {

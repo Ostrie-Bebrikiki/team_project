@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
 		
 		switch (s) {
 			case '1': MenuMatrix(); break;
-			case '2': break;
+			case '2': MenuFraction(); break;
 			case '3': menu_kombinatorika(); break;
 			case '4': menu_ver(); break;
 			case '5': PolynomialMenu(); break;
