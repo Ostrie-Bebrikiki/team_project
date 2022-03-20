@@ -75,7 +75,7 @@ void PolynomialSum()
 		else printf_s("%.3lfx^%d", slag1.c[i], i);
 	}
 	if (slag2.c[1] >= 0) printf_s("+%.3lfx", slag2.c[1]); //Для x^1
-	else printf_s("%.3lfx^%d", slag2.c[1]);
+	else printf_s("%.3lfx", slag2.c[1]);
 	if (slag1.c[0] >= 0) printf_s("+%lf\n", slag1.c[0]); //Для x^0
 	else printf_s("%.3lf\n", slag1.c[0]);
 
