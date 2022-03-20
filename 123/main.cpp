@@ -1,7 +1,4 @@
-
 #include "bebra.h"
-
-using namespace std;
 
 int main(int argc, char** argv) {
 	SetConsoleOutputCP(1251);

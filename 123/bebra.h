@@ -4,6 +4,7 @@
 #include <iostream>
 #include <conio.h>
 #include <windows.h>
+#include "SDL.h"
 
 void MenuMatrix();
 void menu_ver();
