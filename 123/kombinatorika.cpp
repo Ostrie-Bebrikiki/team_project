@@ -178,14 +178,13 @@ void combination_with()
 	}
 }
 
-
 void combination_without()
 {
 	while (true)
 	{
 		system("cls");
-		unsigned int n, k;
-		unsigned long long int x = 1, fact = 1;
+		unsigned int n, k, x;
+		unsigned long long int a = 1, b = 1, c = 1;
 		char cmd;
 		printf_s("Введите количество n элементов множества: ");
 		do
@@ -207,21 +206,26 @@ void combination_without()
 			}
 		} while (k > n);
 
-		for (int i = 1; i <= (n + k - 1); i++)
+		for (int i = 1; i <= n; i++)
 		{
-			x *= i;
-			if (i == n + k - 1)
+			a *= i;
+			if (i == n)
 			{
 				for (int j = 1; j <= k; j++)
 				{
-					fact *= j;
+					b *= j;
 					if (j == k)
 					{
-						x /= (n - 1) * fact;
+						for (int l = 1; l <= (n - k); l++)
+						{
+							c *= l;
+						}
 					}
 				}
 			}
 		}
+
+		x = a / (b * c);
 
 		printf_s("\nОтвет : %lu\n", x);
 
