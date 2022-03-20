@@ -181,6 +181,60 @@ void combination_with()
 
 void combination_without()
 {
+	while (true)
+	{
+		system("cls");
+		unsigned int n, k;
+		unsigned long long int x = 1, fact = 1;
+		char cmd;
+		printf_s("Введите количество n элементов множества: ");
+		do
+		{
+			scanf_s("%u", &n);
+			if (n < 1)
+			{
+				printf_s("Некорректный ввод.\n\n? : ");
+			}
+		} while (n < 1);
+
+		printf_s("Введите количество k элементов выбора (k <= n): ");
+		do
+		{
+			scanf_s("%u", &k);
+			if (k > n)
+			{
+				printf_s("Некорректный ввод.\n\n? : ");
+			}
+		} while (k > n);
+
+		for (int i = 1; i <= (n + k - 1); i++)
+		{
+			x *= i;
+			if (i == n + k - 1)
+			{
+				for (int j = 1; j <= k; j++)
+				{
+					fact *= j;
+					if (j == k)
+					{
+						x /= (n - 1) * fact;
+					}
+				}
+			}
+		}
+
+		printf_s("\nОтвет : %lu\n", x);
+
+		printf_s("\n1 - Вернуться в меню.\nЧтобы использовать калькулятор ещё раз, нажмите любую кнопку.\n\n? : ");
+		cmd = _getche();
+		if (cmd == '1')
+		{
+			system("cls");
+			return;
+		}
+
+		system("cls");
+	}
 }
 
 void transposition()
