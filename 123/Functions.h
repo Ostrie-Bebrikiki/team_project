@@ -6,6 +6,7 @@
 #include <string>
 #include "SDL.h"
 #include <math.h>
+#include <windows.h>
 using namespace std;
 
 void input_d(double& a, std::string str) {

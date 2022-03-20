@@ -15,11 +15,13 @@ void choose(char &s) {
 	while (true) {
 		std::cout << "Выберите функцию" << endl << "1 - Полином степени N: a0+a1**x+a2*x^2+...+aN*x^N" << endl
 			<< "2 - Степенная: a*x^b+c" << endl << "3 - Показательная: a*b^(c*x)+d" << endl << "4 - Логарифмическая: a*ln(b*x)+c" << endl
-			<< "5 - Синусоида: a*sin(b*x+c)+d" << endl << "6 - Косинусоида: a*cos(b*x+c)+d" << endl << '>';
+			<< "5 - Синусоида: a*sin(b*x+c)+d" << endl << "6 - Косинусоида: a*cos(b*x+c)+d" <<endl<<"0 - Назад" << endl << '>';
 		s = _getche();
-		if (s == '1' || s == '2' || s == '3' || s == '4' || s == '5' || s == '6') break;
+		if (s == '0' || s == '1' || s == '2' || s == '3' || s == '4' || s == '5' || s == '6') break;
 	}
 }
+
+
 
 void menu_Func() {
 	char s, ch;
@@ -33,8 +35,10 @@ void menu_Func() {
 			if (s == '0' || s == '1' || s == '2' || s == '3' || s == '4') break;
 			system("cls");
 		}
+		if (s == '0') return;
 		cout << endl;
 		choose(ch);
+		if (ch == '0') continue;
 		double x, a, b, c, d;
 		cin >> x >> a >> b >> c >> d;
 		
@@ -43,7 +47,6 @@ void menu_Func() {
 		case '2': graph(ch, x, a, b, c, d); break;
 		case '3': root_f(ch, x, a, b, c, d); break;
 		case '4': extremum(ch, x, a, b, c, d); break;
-		case '0': return;
 		default: break;
 		}
 		cout << endl << "Продолжить?";
