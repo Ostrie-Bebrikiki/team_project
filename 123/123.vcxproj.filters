@@ -27,7 +27,7 @@
     <ClInclude Include="kombinatorika.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\Telegram Desktop\MatrixCaulculator-Header.h">
+    <ClInclude Include="MatrixCaulculator-Header.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -42,9 +42,9 @@
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
     <ClCompile Include="kombinatorika.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Downloads\Telegram Desktop\MatrixCalculator-Functions.cpp">
+    <ClCompile Include="MatrixCalculator-Functions.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
   </ItemGroup>
