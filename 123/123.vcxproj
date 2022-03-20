@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bebra.h" />
+    <ClInclude Include="Functions.h" />
     <ClInclude Include="header_ver.h" />
     <ClInclude Include="kombinatorika.h" />
     <ClInclude Include="MatrixCaulculator-Header.h" />

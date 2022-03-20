@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
 			case '3': menu_kombinatorika(); break;
 			case '4': menu_ver(); break;
 			case '5': PolynomialMenu(); break;
-			case '6': break;
+			case '6': menu_Func(); break;
 			default: break;
 		}
 		system("cls");
