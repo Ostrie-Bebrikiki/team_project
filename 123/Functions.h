@@ -40,8 +40,8 @@ void input(int& a, std::string str) {
 	}
 }
 
-void integral(char ch, double x, double a, double b, double c, double d);
-void graph(char ch, double x, double a, double b, double c, double d);
-void root_f(char ch, double x, double a, double b, double c, double d);
-void extremum(char ch, double x, double a, double b, double c, double d);
+void integral(char ch, double a, double b, double c, double d);
+void graph(char ch, double a, double b, double c, double d);
+void root_f(char ch, double a, double b, double c, double d);
+void extremum(char ch, double a, double b, double c, double d);
 #endif
