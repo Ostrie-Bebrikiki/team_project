@@ -95,7 +95,7 @@ void PolynomialSubstraction(){
 		printf_s("Введите степень первого многочлена: "); scanf_s("%d", &sub1.n); // Запрос степеней многочленов
 		printf_s("Введите степень второго многочлена: "); scanf_s("%d", &sub2.n);
 		if (sub1.n <= 0 || sub2.n <= 0) system("cls");
-	} while (sub1.n <= 0 || sub2.n <= 0 sub1.n >= 100 || sub2.n >= 100);
+	} while (sub1.n <= 0 || sub2.n <= 0 || sub1.n >= 100 || sub2.n >= 100);
 
 	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
 	PolynomInput(sub1);
@@ -119,17 +119,33 @@ void PolynomialSubstraction(){
 		subPolynom.c[i] = sub1.c[i] - sub2.c[i];
 	}
 
-	printf_s("Разность многочленов: ");
-	PolynomOutput(subPolynom);
+	printf_s("Разность многочленов: "); 
+	PolynomOutput(subPolynom); //вывод
 
 	system("cls");
 }
 
 void PolynomialMulti()
 {
-	printf_s("\tУМНОЖЕНИЕ МНОГОЧЛЕНОВ\n");
-	printf_s("Введите первый многочлен: ");
-	printf_s("Введите второй многочлен: ");
+	Polynomial sub1, sub2;
+	do {
+		printf_s("\tУМНОЖЕНИЕ МНОГОЧЛЕНОВ\n");
+		printf_s("Введите степень первого многочлена: "); scanf_s("%d", &sub1.n); // Запрос степеней многочленов
+		printf_s("Введите степень второго многочлена: "); scanf_s("%d", &sub2.n);
+		if (sub1.n <= 0 || sub2.n <= 0) system("cls");
+	} while (sub1.n <= 0 || sub2.n <= 0 || sub1.n >= 100 || sub2.n >= 100);
+
+	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
+	PolynomInput(sub1);
+	printf_s("Введите константы второго многочлена: \n");
+	PolynomInput(sub2);
+
+	printf_s("Первый многочлен: "); // Вывод первого многочлена
+	PolynomOutput(sub1);
+
+	printf_s("Второй многочлен: "); // Вывод первого многочлена
+	PolynomOutput(sub2);
+
 	system("cls");
 }
 
