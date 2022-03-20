@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int main() {
+int main(int argc, char** argv) {
 	SetConsoleOutputCP(1251);
 	SetConsoleCP(1251);
 	setlocale(LC_ALL, "");
