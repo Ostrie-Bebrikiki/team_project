@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include "SDL.h"
+#include <math.h>
 using namespace std;
 
 void input_d(double& a, std::string str) {
@@ -38,4 +39,8 @@ void input(int& a, std::string str) {
 	}
 }
 
+void integral(char ch, double x, double a, double b, double c, double d);
+void graph(char ch, double x, double a, double b, double c, double d);
+void root_f(char ch, double x, double a, double b, double c, double d);
+void extremum(char ch, double x, double a, double b, double c, double d);
 #endif
