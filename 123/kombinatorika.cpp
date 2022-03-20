@@ -39,14 +39,15 @@ int menu_kombinatorika()
 void placement_with()
 {
 	system("cls");
-	unsigned int n, k, x;
+	unsigned int n, k;
+	unsigned long long int x;
 	char cmd;
 	while (true)
 	{
 		printf_s("Введите количество символов n: ");
 		do
 		{
-			scanf_s("%d", &n);
+			scanf_s("%u", &n);
 			if (n < 1)
 			{
 				printf_s("Неверный ввод.\n\n? : ");
@@ -56,7 +57,7 @@ void placement_with()
 		printf_s("Введите количество позиций k: ");
 		do
 		{
-			scanf_s("%d", &k);
+			scanf_s("%u", &k);
 			if (k < 1)
 			{
 				printf_s("Неверный ввод.\n\n? : ");
@@ -68,14 +69,13 @@ void placement_with()
 			x *= n;
 		}
 
-		printf_s("\nОтвет : %d\n", x);
+		printf_s("\nОтвет : %lu\n", x);
 
-		printf_s("\n1 - Вернуться в меню.\nЧтобы продолжить нажмите любую кнопку.\n\n? : ");
+		printf_s("\n1 - Вернуться в меню.\nЧтобы использовать калькулятор ещё раз, нажмите любую кнопку.\n\n? : ");
 		cmd = _getche();
 		if (cmd == '1')
 		{
 			system("cls");
-			printf_s("\n");
 			return;
 		}
 
@@ -85,6 +85,39 @@ void placement_with()
 
 void placement_without()
 {
+	system("cls");
+	unsigned int n;
+	unsigned long long int x = 1;
+	char cmd;
+	while (true)
+	{
+		printf_s("Введите количество элементов, входящих в перестановку: ");
+		do
+		{
+			scanf_s("%u", &n);
+			if (n < 1)
+			{
+				printf_s("Некорректный ввод.\n\n? : ");
+			}
+		} while (n < 1);
+		
+		for (int i = 1; i <= n; i++)
+		{
+			x *= i;
+		}
+
+		printf_s("\nОтвет : %lu\n", x);
+
+		printf_s("\n1 - Вернуться в меню.\nЧтобы использовать калькулятор ещё раз, нажмите любую кнопку.\n\n? : ");
+		cmd = _getche();
+		if (cmd == '1')
+		{
+			system("cls");
+			return;
+		}
+
+		system("cls");
+	}
 }
 
 void combination_with()

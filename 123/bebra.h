@@ -5,6 +5,7 @@
 #include <conio.h>
 #include <windows.h>
 
+void MenuMatrix();
 void menu_ver();
 void PolynomialMenu();
 int menu_kombinatorika();

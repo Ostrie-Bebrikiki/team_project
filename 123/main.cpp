@@ -21,8 +21,8 @@ int main() {
 		cout << endl;
 		
 		switch (s) {
-			case '1':  break;
-			case '2':  break;
+			case '1': MenuMatrix(); break;
+			case '2': break;
 			case '3': menu_kombinatorika(); break;
 			case '4': menu_ver(); break;
 			case '5': PolynomialMenu(); break;
