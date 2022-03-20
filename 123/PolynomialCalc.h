@@ -15,3 +15,6 @@ void PolynomialMulti(); //Умножение
 void PolynomialMultiNumber(); //Умножение на число
 void PolynomialDerivative(); //Производная
 void PolynomialDivision(); //Деление	
+
+void PolynomInput(Polynomial &slag); //Ввод многочлена
+void PolynomOutput(Polynomial& slag); //Вывод многочлена

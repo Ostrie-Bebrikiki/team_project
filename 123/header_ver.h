@@ -6,8 +6,7 @@
 #include <string>
 using namespace std;
 
-
-void input_d(double& a, string str) {
+void input_d1(double& a, std::string str) {
 	while (true) {
 		std::cout << str << ": ";
 		std::cin >> a;
@@ -22,7 +21,7 @@ void input_d(double& a, string str) {
 		}
 	}
 }
-void input(int& a, string str) {
+void input1(int& a, std::string str) {
 	while (true) {
 		std::cout << str << ": ";
 		std::cin >> a;

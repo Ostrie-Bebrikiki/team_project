@@ -6,9 +6,9 @@ void menu_ver() {
 		while (true) {
 			system("cls");
 			cout << "Выберите действие" << endl << "1 - Вычислить вероятность m/n" << endl << "2 - Вычислить дисперсию для дискретного распределения величин"
-				<< endl << "3 - Вычислить мат. ожидание для дискретного распределения величин" << endl <<"4 - Выход в главное меню" << endl << '>';
+				<< endl << "3 - Вычислить мат. ожидание для дискретного распределения величин" << endl <<"0 - Выход в главное меню" << endl << '>';
 			s = _getche();
-			if (s == '1' || s == '2' || s == '3' || s == '4') break;
+			if (s == '1' || s == '2' || s == '3' || s == '0') break;
 			system("cls");
 		}
 		cout << endl;
@@ -17,7 +17,7 @@ void menu_ver() {
 		case '1':ver(); break;
 		case '2':disp(); break;
 		case '3':MathAwait(); break;
-		case '4': return;
+		case '0': return;
 		default: break;
 		}
 		cout << endl << "Продолжить?";
@@ -29,9 +29,9 @@ void menu_ver() {
 
 void ver() {
 	double m, n;
-	input_d(m, "Введите m");
+	input_d1(m, "Введите m");
 	while (true) {
-		input_d(n, "Введите n");
+		input_d1(n, "Введите n");
 		if (n > 0) break;
 		else cout << "n должна быть больше 0\n";
 	}
@@ -41,7 +41,7 @@ void ver() {
 void disp() {
 	int x;
 	while (true) {
-		input(x, "Введите кол-во величин");
+		input1(x, "Введите кол-во величин");
 		if (x <= 0) cout << "кол-во должно быть больше нуля" << endl;
 		else break;
 	}
@@ -54,7 +54,7 @@ void disp() {
 			str += (i % 2 == 0 ? "значение " : "вес ");
 			str += "№ ";
 			str += to_string((i + 2) / 2);
-			input_d(xipi[i], str);
+			input_d1(xipi[i], str);
 			sum += i % 2 != 0 ? xipi[i] : 0;
 		}
 		if (sum != 1) cout << "Суммарная вероятность должна равняться 1" << endl;
@@ -73,7 +73,7 @@ void disp() {
 void MathAwait() {
 	int x;
 	while (true) {
-		input(x, "Введите кол-во величин");
+		input1(x, "Введите кол-во величин");
 		if (x <= 0) cout << "кол-во должно быть больше нуля" << endl;
 		else break;
 	}
@@ -86,7 +86,7 @@ void MathAwait() {
 			str += (i % 2 == 0 ? "значение " : "вес ");
 			str += "№ ";
 			str += to_string((i + 2) / 2);
-			input_d(xipi[i], str);
+			input_d1(xipi[i], str);
 			sum += i % 2 != 0 ? xipi[i] : 0;
 		}
 		if (sum > 1) cout << "Суммарная вероятность должна равняться 1"<<endl;
@@ -99,3 +99,4 @@ void MathAwait() {
 	free(xipi);
 	cout << "Ответ: " << xp;
 }
+
