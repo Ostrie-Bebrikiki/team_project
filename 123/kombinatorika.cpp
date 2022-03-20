@@ -87,10 +87,10 @@ void placement_without()
 {
 	system("cls");
 	unsigned int n;
-	unsigned long long int x = 1;
 	char cmd;
 	while (true)
 	{
+		unsigned long long int x = 1;
 		printf_s("Введите количество элементов, входящих в перестановку: ");
 		do
 		{
@@ -122,7 +122,62 @@ void placement_without()
 
 void combination_with()
 {
+	while (true)
+	{
+		system("cls");
+		unsigned int n, k;
+		unsigned long long int x = 1, fact = 1;
+		char cmd;
+		printf_s("Введите количество n элементов множества: ");
+		do
+		{
+			scanf_s("%u", &n);
+			if (n < 1)
+			{
+				printf_s("Некорректный ввод.\n\n? : ");
+			}
+		} while (n < 1);
+
+		printf_s("Введите количество k элементов выбора: ");
+		do
+		{
+			scanf_s("%u", &k);
+			if (k < 1)
+			{
+				printf_s("Некорректный ввод.\n\n? : ");
+			}
+		} while (k < 1);
+
+		for (int i = 1; i <= (n + k - 1); i++)
+		{
+			x *= i;
+			if (i == n + k - 1)
+			{
+				for (int j = 1; j <= k; j++)
+				{
+					fact *= j;
+					if (j == k)
+					{
+						x /= (n - 1) * fact;
+					}
+				}
+			}
+		}
+
+		printf_s("\nОтвет : %lu\n", x);
+
+		printf_s("\n1 - Вернуться в меню.\nЧтобы использовать калькулятор ещё раз, нажмите любую кнопку.\n\n? : ");
+		cmd = _getche();
+		if (cmd == '1')
+		{
+			system("cls");
+			return;
+		}
+
+		system("cls");
+	}
 }
+
 
 void combination_without()
 {
