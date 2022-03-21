@@ -10,6 +10,7 @@ void PolynomialMenu()
 	bool flag = false;
 	do {
 		do {
+			system("cls");
 			printf_s("\tКАЛЬКУЛЯТОР МНОГОЧЛЕНОВ\n");
 			printf_s("Выберите действие:\n");
 			printf_s("1: Сложение\n");
@@ -60,7 +61,7 @@ void PolynomialSum()
 		printf_s("Введите степень первого многочлена: "); scanf_s("%d", &slag1.n); // Запрос степеней многочленов
 		printf_s("Введите степень второго многочлена: "); scanf_s("%d", &slag2.n);
 		if (slag1.n <= 0 || slag2.n <= 0) system("cls");
-	} while (slag1.n <= 0 || slag2.n <= 0 || slag1.n >= 100 || slag2.n >= 100);
+	} while (slag1.n <= 0 || slag2.n <= 0 || slag1.n >= 50 || slag2.n >= 50);
 
 	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
 	PolynomInput(slag1);
@@ -80,6 +81,8 @@ void PolynomialSum()
 
 	Polynomial sumPolynom;
 
+	sumPolynom.n = max;
+
 	for (int i = max; i >= 0; i--) {
 		sumPolynom.c[i] = slag1.c[i] + slag2.c[i];
 	}
@@ -95,7 +98,7 @@ void PolynomialSubstraction(){
 		printf_s("Введите степень первого многочлена: "); scanf_s("%d", &sub1.n); // Запрос степеней многочленов
 		printf_s("Введите степень второго многочлена: "); scanf_s("%d", &sub2.n);
 		if (sub1.n <= 0 || sub2.n <= 0) system("cls");
-	} while (sub1.n <= 0 || sub2.n <= 0 || sub1.n >= 100 || sub2.n >= 100);
+	} while (sub1.n <= 0 || sub2.n <= 0 || sub1.n >= 50 || sub2.n >= 50);
 
 	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
 	PolynomInput(sub1);
@@ -114,6 +117,7 @@ void PolynomialSubstraction(){
 	else max = sub2.n;
 
 	Polynomial subPolynom;
+	subPolynom.n = max;
 
 	for (int i = max; i >= 0; i--) {
 		subPolynom.c[i] = sub1.c[i] - sub2.c[i];
@@ -122,39 +126,71 @@ void PolynomialSubstraction(){
 	printf_s("Разность многочленов: "); 
 	PolynomOutput(subPolynom); //вывод
 
-	system("cls");
+	//system("cls");
 }
 
 void PolynomialMulti()
 {
-	Polynomial sub1, sub2;
+	Polynomial fact1, fact2;
 	do {
 		printf_s("\tУМНОЖЕНИЕ МНОГОЧЛЕНОВ\n");
-		printf_s("Введите степень первого многочлена: "); scanf_s("%d", &sub1.n); // Запрос степеней многочленов
-		printf_s("Введите степень второго многочлена: "); scanf_s("%d", &sub2.n);
-		if (sub1.n <= 0 || sub2.n <= 0) system("cls");
-	} while (sub1.n <= 0 || sub2.n <= 0 || sub1.n >= 100 || sub2.n >= 100);
+		printf_s("Введите степень первого многочлена: "); scanf_s("%d", &fact1.n); // Запрос степеней многочленов
+		printf_s("Введите степень второго многочлена: "); scanf_s("%d", &fact2.n);
+		if (fact1.n <= 0 || fact2.n <= 0) system("cls");
+	} while (fact1.n <= 0 || fact2.n <= 0 || fact1.n >= 25 || fact2.n >= 25);
 
 	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
-	PolynomInput(sub1);
+	PolynomInput(fact1);
 	printf_s("Введите константы второго многочлена: \n");
-	PolynomInput(sub2);
+	PolynomInput(fact2);
 
 	printf_s("Первый многочлен: "); // Вывод первого многочлена
-	PolynomOutput(sub1);
+	PolynomOutput(fact1);
 
 	printf_s("Второй многочлен: "); // Вывод первого многочлена
-	PolynomOutput(sub2);
+	PolynomOutput(fact2);
 
-	system("cls");
+	int maxN = fact1.n + fact2.n;
+	Polynomial Multi;
+	Multi.n = maxN;
+
+	for (int i = fact1.n; i >= 0; i--) {
+		for (int k = fact2.n; k >= 0; k--) {
+			Multi.c[i + k] += fact1.c[i] * fact2.c[k];
+		}
+	}
+
+	printf_s("Произведение многочленов:");
+	PolynomOutput(Multi);
+
+	//system("cls");
 }
 
 void PolynomialMultiNumber()
 {
+	Polynomial pol;
+	double number;
+
 	printf_s("\tУМНОЖЕНИЕ МНОГОЧЛЕНА НА ЧИСЛО\n");
+
 	printf_s("Введите многочлен: ");
-	printf_s("Введите число: ");
-	system("cls");
+	PolynomInput(pol);
+
+	printf_s("Введите число: "); scanf_s("%lf", &number);
+
+	printf_s("Введенный многочлен: ");
+	PolynomOutput(pol);
+
+	printf_s("Введенное число: %.3lf\n", number);
+
+	for (int i = pol.n; i >= 0; i--) {
+		pol.c[i] *= number;
+	}
+
+	printf_s("Результат умножения: ");
+	PolynomOutput(pol);
+
+	//system("cls");
 }
 
 void PolynomialDerivative()
@@ -181,13 +217,20 @@ void PolynomInput(Polynomial &slag)
 
 void PolynomOutput(Polynomial& slag)
 {
-	printf_s("%.3lfx^%d", slag.c[slag.n], slag.n);
+	if (slag.c[slag.n] == 1) printf_s("x^%d", slag.n);
+	else if (slag.c[slag.n] > 1 || slag.c[slag.n] < 0) printf_s("%.3lfx^%d", slag.c[slag.n], slag.n);
+
 	for (int i = slag.n - 1; i >= 2; i--) {
-		if (slag.c[i] >= 0) printf_s("+%.3lfx^%d", slag.c[i], i);
-		else printf_s("%.3lfx^%d", slag.c[i], i);
+		if (slag.c[i] > 1) printf_s("+%.3lfx^%d", slag.c[i], i);
+		else if (slag.c[i] == 1) printf_s("+x^%d", i);
+		else if (slag.c[i] < 0) printf_s("%.3lfx^%d", slag.c[i], i);
 	}
-	if (slag.c[1] >= 0) printf_s("+%.3lfx", slag.c[1]); //Для x^1
-	else printf_s("%.3lfx", slag.c[1]);
-	if (slag.c[0] >= 0) printf_s("+%lf\n", slag.c[0]); //Для x^0
-	else printf_s("%.3lf\n", slag.c[0]);
+
+	if (slag.c[1] > 1) printf_s("+%.3lfx", slag.c[1]);//Для x^1
+	else if (slag.c[1] == 1) printf_s("+x");
+	else if (slag.c[1] < 0) printf_s("%.3lfx", slag.c[1]);
+
+	if (slag.c[0] > 1) printf_s("+%.3lf\n", slag.c[0]);//Для x^0
+	else if (slag.c[0] == 1) printf_s("+1\n");
+	else if (slag.c[0] < 0) printf_s("%.3lf\n", slag.c[0]);
 }
