@@ -46,32 +46,39 @@ void integral(char ch, double a, double b, double c, double d) {
 		input_d(D2, "Введите правую границу");
 		if (D1 == 0.0f && D2 == 0.0f) return;
 		if (D2 < D1) cout << "Левая граница не может быть больше правой" << endl;
-		else if(ch == '2' && D1 < 0 && double((int)b) != b) cout << "Нельзя найти интеграл при основании меньше нуля и нецелой степенью\nДля выхода введите 0 0\n";
+		else if(ch == '2' && D1 < 0 && double((int)b) != b) cout << "Нельзя найти интеграл при границе меньше нуля и нецелой степенью\nДля выхода введите 0 0\n";
+		//else if(ch == '2'&& D1 < 0 && b < 0) cout << "Нельзя найти интеграл при отрицательной степени и границе меньше нуля\nДля выхода введите 0 0\n";
 		else if(ch == '3' && b < 0 && (double((int)c*D1) != c*D1 || double((int)c * D2) != c * D2)) cout << "Нельзя найти интеграл при основании меньше нуля и нецелой степенью\nДля выхода введите 0 0\n";
 		else if(ch == '4' && D1 <= 0) cout << "Нельзя найти интеграл при границе меньше либо равной нулю\nДля выхода введите 0 0\n";
 		else break;
 	}
 	if (ch != '1') {
-		while (true) {
-			input_d(eps, "Введите погрешность");
-			if (eps > 1 || eps <= 0) cout << "Погрешность не может быть меньше или равна нулю и не может быть больше 1" << endl;
-			else break;
-		}
-		double I = eps + 1, I1 = 0;
-		for (int N = 2; (N <= 4) || (fabs(I1 - I) > eps); N *= 2)
-		{
-			double h, sum2 = 0, sum4 = 0, sum = 0;
-			h = (D2 - D1) / (2 * N);
-			for (int i = 1; i <= 2 * N - 1; i += 2)
-			{
-				sum4 += f(ch, D1 + h * i, a, b, c, d);
-				sum2 += f(ch, D1 + h * (i + 1), a, b, c, d);
+		if ((ch == '2' && b == -1) || (ch=='3' && log(b)*c == 0) || ((ch == '5' || ch == '6') && b ==0)) {
+			while (true) {
+				input_d(eps, "Введите погрешность");
+				if (eps > 1 || eps <= 0) cout << "Погрешность не может быть меньше или равна нулю и не может быть больше 1" << endl;
+				else break;
 			}
-			sum = f(ch, D1, a, b, c, d) + 4 * sum4 + 2 * sum2 - f(ch, D2, a, b, c, d);
-			I = I1;
-			I1 = (h / 3) * sum;
+			double I = eps + 1, I1 = 0;
+			for (int N = 2; (N <= 4) || (fabs(I1 - I) > eps); N *= 2)
+			{
+				double h, sum2 = 0, sum4 = 0, sum = 0;
+				h = (D2 - D1) / (2 * N);
+				for (int i = 1; i <= 2 * N - 1; i += 2)
+				{
+					sum4 += f(ch, D1 + h * i, a, b, c, d);
+					sum2 += f(ch, D1 + h * (i + 1), a, b, c, d);
+				}
+				sum = f(ch, D1, a, b, c, d) + 4 * sum4 + 2 * sum2 - f(ch, D2, a, b, c, d);
+				I = I1;
+				cout << (I1) << endl;
+				I1 = (h / 3) * sum;
+			}
+			cout << "Ответ: " << I1;
 		}
-		cout << "Ответ: " << I1;
+		else {
+			cout << "Ответ: " << f1(ch,D2,a,b,c,d) - f1(ch,D1,a,b,c,d);
+		}
 	}
 	else {
 		int N;
@@ -127,6 +134,9 @@ void graph(char ch, double a, double b, double c, double d) {
 	}
 	i2 += h, i1 -= h;
 	SDL_RenderDrawLine(renderer, i2, HEIGHT / 2, i1, HEIGHT / 2);
+
+
+
 	while (!quit) {
 		while (SDL_PollEvent(&e)) {
 			if (e.type == SDL_QUIT) {

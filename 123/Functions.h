@@ -85,6 +85,16 @@ double f(char ch, double x, double a, double b, double c, double d) {
 	default: return 0;
 	}
 }
+double f1(char ch, double x, double a, double b, double c, double d) {
+	switch (ch) {
+	case '2': return a * pow(x, b+1)/(b+1) + c*x;
+	case '3': return d * x + a * pow(b, c * x) / (log(b) * c);
+	case '4': return x * (a * log(b * x) + c - a);
+	case '5': return d * x - (a * cos(b * x + c) / b);
+	case '6': return d * x + (a * sin(b * x + c) / b);
+	default: return 0;
+	}
+}
 void choose(char& s) {
 	while (true) {
 		std::cout << "Выберите функцию" << endl << "1 - Полином степени N: a0+a1**x+a2*x^2+...+aN*x^N" << endl
