@@ -39,45 +39,9 @@ void input(int& a, std::string str) {
 		}
 	}
 }
-void DrawCircle(SDL_Renderer* renderer, int32_t centreX, int32_t centreY, int32_t radius)
-{
-	const int32_t diameter = (radius * 2);
-
-	int32_t x = (radius - 1);
-	int32_t y = 0;
-	int32_t tx = 1;
-	int32_t ty = 1;
-	int32_t error = (tx - diameter);
-
-	while (x >= y)
-	{
-		SDL_RenderDrawPoint(renderer, centreX + x, centreY - y);
-		SDL_RenderDrawPoint(renderer, centreX + x, centreY + y);
-		SDL_RenderDrawPoint(renderer, centreX - x, centreY - y);
-		SDL_RenderDrawPoint(renderer, centreX - x, centreY + y);
-		SDL_RenderDrawPoint(renderer, centreX + y, centreY - x);
-		SDL_RenderDrawPoint(renderer, centreX + y, centreY + x);
-		SDL_RenderDrawPoint(renderer, centreX - y, centreY - x);
-		SDL_RenderDrawPoint(renderer, centreX - y, centreY + x);
-
-		if (error <= 0)
-		{
-			++y;
-			error += ty;
-			ty += 2;
-		}
-
-		if (error > 0)
-		{
-			--x;
-			tx += 2;
-			error += (tx - diameter);
-		}
-	}
-}
 double f(char ch, double x, double a, double b, double c, double d) {
 	switch (ch) {
-	case '2': return a * pow(x, b) + c;
+	case '2': return (x < 0 && double((int)b) != b ? -a : a) * pow((x < 0 && double((int)b) != b ? -x : x), b) + c;
 	case '3': return a * pow(b, c * x) + d;
 	case '4': return a * log(b * x) + c;
 	case '5': return a * sin(b * x + c) + d;

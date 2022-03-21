@@ -109,8 +109,16 @@ void graph(char ch, double a, double b, double c, double d) {
 	}
 	i2 += h, i1 -= h;
 	SDL_RenderDrawLine(renderer, i2, HEIGHT / 2, i1, HEIGHT / 2);
-
-
+	int x1 = (WIDTH / 2) + (D1 * h);
+	int y, y1 = f(ch,D1,a,b,c,d);
+	cout << h<<endl;
+	for (double i = D1; i <=D2 ; i+= 4.0f/h) {
+		int x = (WIDTH / 2) + (i * h);
+		y = f(ch, i, a, b, c, d);
+		SDL_RenderDrawLine(renderer, x1, HEIGHT / 2 - y1, x, HEIGHT / 2 - y);
+		x1 = x, y1 = y;
+		SDL_RenderPresent(renderer);
+	}
 
 	while (!quit) {
 		while (SDL_PollEvent(&e)) {
