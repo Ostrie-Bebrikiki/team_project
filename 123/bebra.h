@@ -14,7 +14,7 @@
 void MenuMatrix();
 void menu_ver();
 void PolynomialMenu();
-int menu_kombinatorika();
+void menu_kombinatorika();
 void menu_Func();
 void MenuFraction();
 

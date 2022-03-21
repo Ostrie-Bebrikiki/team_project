@@ -2,7 +2,7 @@
 #include "kombinatorika.h"
 #include "bebra.h"
 
-int menu_kombinatorika()
+void menu_kombinatorika()
 {
 	system("cls");
 	char cmd;
@@ -27,7 +27,7 @@ int menu_kombinatorika()
 		case '4': combination_without(); break;
 		case '5': transposition_without(); break;
 		case '6': transposition_with(); break;
-		case '0': return 0;
+		case '0': return;
 		}
 	}
 }
