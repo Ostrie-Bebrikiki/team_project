@@ -87,15 +87,8 @@ void MenuFraction()
             cout << "Введите дробь" << endl;
             EnterFraction(fractionLeft, Nums, &nums_array);
             cout << Nums[0] << "/" << Nums[1] << endl;
-            if (Nums[1] != 0)
-            {
-                cout << "Результат: " << Nums[0] / Nums[1] << endl;
-                cout << endl;
-            }
-            else
-            {
-                cout << "Из-за деления на ноль невозможно работать с дробью" << endl;
-            }
+            cout << "Результат: " << Nums[0] / Nums[1] << endl;
+            cout << endl;
             system("pause");
         }
         break;
@@ -125,23 +118,22 @@ int CheckError(string fraction)
     int error = 0;
     int CountSlash = 0;
     int CountPoint = 0;
-
-        for (int i = 0; i < fraction.length(); i++)
-        {
-            if (isspace(fraction[i]) || isalpha(fraction[i]) || (ispunct(fraction[i]) && fraction[i] != '/' && fraction[i] != ','))
-            {
-                error = 1;
-                break;
-            }
-            if (fraction[i] == '/')
-            {
-                CountSlash++;
-            }
-        }
-        if (CountSlash != 1)
+    for (int i = 0; i < fraction.length(); i++)
+    {
+        if (isspace(fraction[i]) || isalpha(fraction[i]) || (ispunct(fraction[i]) && fraction[i] != '/' && fraction[i] != ','))
         {
             error = 1;
+            break;
         }
+        if (fraction[i] == '/')
+        {
+            CountSlash++;
+        }
+    }
+    if (CountSlash != 1)
+    {
+        error = 1;
+    }
     int j = 0;
     while (j < fraction.length())
     {
@@ -166,14 +158,13 @@ int CheckError(string fraction)
     }
     if (error == 1)
     {
-        cout << "Совершена ошибка при вводе формулы. Проверьте ввод." << endl;
+        cout << "Совершена ошибка при вводе формулы. Повторите ввод." << endl;
     }
-
     return error;
 }
 
 
-void EnterFractionStart(string fractionLeft, string fractionRight, int &nums_array, double *Nums)
+void EnterFractionStart(string fractionLeft, string fractionRight, int& nums_array, double* Nums)
 {
     system("cls");
     cout << "Введите первую дробь: ";
@@ -182,13 +173,17 @@ void EnterFractionStart(string fractionLeft, string fractionRight, int &nums_arr
     EnterFraction(fractionRight, Nums, &nums_array);
 }
 
-void EnterFraction(string fraction, double* Nums, int *nums_array)
+void EnterFraction(string fraction, double* Nums, int* nums_array)
 {
-    int ERRORnull = 0;
+    int ERRORnull;
     do
     {
-        getline(cin, fraction);
-        system("cls");
+        ERRORnull = 0;
+        do
+        {
+            getline(cin, fraction);
+            system("cls");
+        } while (CheckError(fraction));
         for (int i = 0; i < fraction.length(); i++)
         {
 
@@ -206,11 +201,14 @@ void EnterFraction(string fraction, double* Nums, int *nums_array)
         if (Nums[1] == 0 || Nums[3] == 0)
         {
             ERRORnull++;
+            cout << "Программа не может работать с дробями, у которых в знаменателе ноль." << endl << "Повторите Ввод" << endl;
+            (*nums_array)--;
+            (*nums_array)--;
         }
-    } while (CheckError(fraction) && ERRORnull == 0);
+    } while (ERRORnull != 0);
 }
 
-void ShowFractions(double *Nums, double numerator, double denumerator, char operation)
+void ShowFractions(double* Nums, double numerator, double denumerator, char operation)
 {
     switch (operation)
     {
