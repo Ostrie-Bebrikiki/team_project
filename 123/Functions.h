@@ -87,9 +87,9 @@ double f(char ch, double x, double a, double b, double c, double d) {
 }
 double f1(char ch, double x, double a, double b, double c, double d) {
 	switch (ch) {
-	case '2': return a * pow(x, b+1)/(b+1) + c*x;
-	case '3': return d * x + a * pow(b, c * x) / (log(b) * c);
-	case '4': return x * (a * log(b * x) + c - a);
+	case '2': return b == -1 ? (a * log(x < 0 ? -x : x) + c * x) : (a * pow(x, b + 1) / (b + 1) + c * x);
+	case '3': return c == 0 || b <=0? (b==0?(d):(d+(b < 0?-1:1)*a)):(d * x + (a * pow(b, c * x)) / (log(b) * c));
+	case '4': return x==0?x:(x * (a * (log(b * x)-1) + c));
 	case '5': return d * x - (a * cos(b * x + c) / b);
 	case '6': return d * x + (a * sin(b * x + c) / b);
 	default: return 0;
