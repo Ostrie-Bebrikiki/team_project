@@ -12,7 +12,7 @@ void menu_kombinatorika()
 		{
 			printf_s("1 - Размещение с повторениями\n2 - Размещенеие без повторений\n3 - Сочетание с повторением\n4 - Сочетание без повторений\n5 - Перестановки без повторений\n6 - Постановки с повторениями\n0 - Вернуться\n");
 			cmd = _getche();
-			if (cmd == '1' || cmd == '2' || cmd == '3' || cmd == '4' || cmd == '0')
+			if (cmd == '1' || cmd == '2' || cmd == '3' || cmd == '4' || cmd == '5' || cmd == '6' || cmd == '0')
 			{
 				break;
 			}
@@ -35,6 +35,8 @@ void menu_kombinatorika()
 void placement_with()
 {
 	system("cls");
+	int i, error;
+	string tmp;
 	unsigned int n, k;
 	unsigned long long int x;
 	char cmd;
@@ -43,17 +45,54 @@ void placement_with()
 		printf_s("Введите количество элементов n: ");
 		do
 		{
-			scanf_s("%u", &n);
+			do
+			{
+				i = 0;
+				error = 0;
+				getline(cin, tmp);
+				while (i < tmp.length())
+				{
+					if (isdigit(tmp[i]) == 0)
+					{
+						printf_s("Неверный ввод.\n\n? : ");
+						error = 1;
+						break;
+					}
+					i++;
+				}
+			} while (error == 1);
+
+			n = stoi(tmp, 0, 10);
+
 			if (n < 1)
 			{
 				printf_s("Неверный ввод.\n\n? : ");
 			}
+
 		} while (n < 1);
 		x = n;
 		printf_s("Введите количество позиций k: ");
 		do
 		{
-			scanf_s("%u", &k);
+			do
+			{
+				i = 0;
+				error = 0;
+				getline(cin, tmp);
+				while (i < tmp.length())
+				{
+					if (isdigit(tmp[i]) == 0)
+					{
+						printf_s("Неверный ввод.\n\n? : ");
+						error = 1;
+						break;
+					}
+					i++;
+				}
+			} while (error == 1);
+
+			k = stoi(tmp, 0, 10);
+
 			if (k < 1)
 			{
 				printf_s("Неверный ввод.\n\n? : ");
@@ -82,6 +121,8 @@ void placement_with()
 void placement_without()
 {
 	system("cls");
+	int i, error;
+	string tmp;
 	unsigned int n, k;
 	unsigned long long int x, fact;
 	char cmd;
@@ -92,7 +133,25 @@ void placement_without()
 		printf_s("Введите количество элементов n: ");
 		do
 		{
-			scanf_s("%u", &n);
+			do
+			{
+				i = 0;
+				error = 0;
+				getline(cin, tmp);
+				while (i < tmp.length())
+				{
+					if (isdigit(tmp[i]) == 0)
+					{
+						printf_s("Неверный ввод.\n\n? : ");
+						error = 1;
+						break;
+					}
+					i++;
+				}
+			} while (error == 1);
+
+			n = stoi(tmp, 0, 10);
+
 			if (n <= 1)
 			{
 				printf_s("Неверный ввод.\n\n? : ");
@@ -102,7 +161,25 @@ void placement_without()
 		printf_s("Введите количество позиций k (k < n): ");
 		do
 		{
-			scanf_s("%u", &k);
+			do
+			{
+				i = 0;
+				error = 0;
+				getline(cin, tmp);
+				while (i < tmp.length())
+				{
+					if (isdigit(tmp[i]) == 0)
+					{
+						printf_s("Неверный ввод.\n\n? : ");
+						error = 1;
+						break;
+					}
+					i++;
+				}
+			} while (error == 1);
+
+			k = stoi(tmp, 0, 10);
+
 			if (k >= n || k < 1)
 			{
 				printf_s("Неверный ввод.\n\n? : ");
@@ -137,16 +214,36 @@ void placement_without()
 
 void combination_with()
 {
+	system("cls");
+	int i, error;
+	string tmp;
+	unsigned int n, k;
+	char cmd;
 	while (true)
 	{
-		system("cls");
-		unsigned int n, k;
 		unsigned long long int x = 1, fact = 1;
-		char cmd;
 		printf_s("Введите количество n элементов множества: ");
 		do
 		{
-			scanf_s("%u", &n);
+			do
+			{
+				i = 0;
+				error = 0;
+				getline(cin, tmp);
+				while (i < tmp.length())
+				{
+					if (isdigit(tmp[i]) == 0)
+					{
+						printf_s("Неверный ввод.\n\n? : ");
+						error = 1;
+						break;
+					}
+					i++;
+				}
+			} while (error == 1);
+
+			n = stoi(tmp, 0, 10);
+
 			if (n < 1)
 			{
 				printf_s("Некорректный ввод.\n\n? : ");
@@ -156,7 +253,25 @@ void combination_with()
 		printf_s("Введите количество k элементов выбора: ");
 		do
 		{
-			scanf_s("%u", &k);
+			do
+			{
+				i = 0;
+				error = 0;
+				getline(cin, tmp);
+				while (i < tmp.length())
+				{
+					if (isdigit(tmp[i]) == 0)
+					{
+						printf_s("Неверный ввод.\n\n? : ");
+						error = 1;
+						break;
+					}
+					i++;
+				}
+			} while (error == 1);
+
+			k = stoi(tmp, 0, 10);
+
 			if (k < 1)
 			{
 				printf_s("Некорректный ввод.\n\n? : ");
@@ -195,16 +310,36 @@ void combination_with()
 
 void combination_without()
 {
+	system("cls");
+	int i, error;
+	string tmp;
+	unsigned int n, k, x;
+	char cmd;
 	while (true)
 	{
-		system("cls");
-		unsigned int n, k, x;
 		unsigned long long int a = 1, b = 1, c = 1;
-		char cmd;
 		printf_s("Введите количество n элементов множества: ");
 		do
 		{
-			scanf_s("%u", &n);
+			do
+			{
+				i = 0;
+				error = 0;
+				getline(cin, tmp);
+				while (i < tmp.length())
+				{
+					if (isdigit(tmp[i]) == 0)
+					{
+						printf_s("Неверный ввод.\n\n? : ");
+						error = 1;
+						break;
+					}
+					i++;
+				}
+			} while (error == 1);
+
+			n = stoi(tmp, 0, 10);
+
 			if (n < 1)
 			{
 				printf_s("Некорректный ввод.\n\n? : ");
@@ -214,12 +349,30 @@ void combination_without()
 		printf_s("Введите количество k элементов выбора (k <= n): ");
 		do
 		{
-			scanf_s("%u", &k);
+			do
+			{
+				i = 0;
+				error = 0;
+				getline(cin, tmp);
+				while (i < tmp.length())
+				{
+					if (isdigit(tmp[i]) == 0)
+					{
+						printf_s("Неверный ввод.\n\n? : ");
+						error = 1;
+						break;
+					}
+					i++;
+				}
+			} while (error == 1);
+
+			k = stoi(tmp, 0, 10);
+
 			if (k > n)
 			{
 				printf_s("Некорректный ввод.\n\n? : ");
 			}
-		} while (k > n);
+		} while (k < 1 || k > n);
 
 		for (int i = 1; i <= n; i++)
 		{
@@ -259,6 +412,8 @@ void combination_without()
 void transposition_without()
 {
 	system("cls");
+	int i, error;
+	string tmp;
 	unsigned int n;
 	char cmd;
 	while (true)
@@ -267,7 +422,25 @@ void transposition_without()
 		printf_s("Введите количество элементов, входящих в перестановку: ");
 		do
 		{
-			scanf_s("%u", &n);
+			do
+			{
+				i = 0;
+				error = 0;
+				getline(cin, tmp);
+				while (i < tmp.length())
+				{
+					if (isdigit(tmp[i]) == 0)
+					{
+						printf_s("Неверный ввод.\n\n? : ");
+						error = 1;
+						break;
+					}
+					i++;
+				}
+			} while (error == 1);
+
+			n = stoi(tmp, 0, 10);
+
 			if (n < 1)
 			{
 				printf_s("Некорректный ввод.\n\n? : ");
