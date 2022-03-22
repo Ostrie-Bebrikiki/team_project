@@ -241,9 +241,28 @@ void PolynomialDerivative()
 
 void PolynomialDivision()
 {
-	printf_s("\tДЕЛЕНИЕ МНОГОЧЛЕНОВ\n");
-	printf_s("Введите первый многочлен: ");
-	printf_s("Введите второй многочлен: ");
+	Polynomial div1, div2;
+	do {
+		printf_s("\tДЕЛЕНИЕ МНОГОЧЛЕНОВ\n");
+		printf_s("Введите степень первого многочлена: "); scanf_s("%d", &div1.n); // Запрос степеней многочленов
+		printf_s("Введите степень второго многочлена: "); scanf_s("%d", &div2.n);
+		if (div1.n <= 0 || div2.n <= 0 || div1.n > 50 || div2.n > 50 || div2.n > div1.n) system("cls");
+	} while (div1.n <= 0 || div2.n <= 0 || div1.n > 50 || div2.n > 50 || div2.n > div1.n);
+
+	printf_s("Введите константы первого многочленена:\n");
+	PolynomInput(div1);
+
+	printf_s("Введите константы второго многочленена:\n");
+	PolynomInput(div2);
+
+	printf_s("Первый многочлен: ");
+	PolynomOutput(div1);
+
+	printf_s("Второй многочлен: ");
+	PolynomOutput(div2);
+
+
+
 	system("cls");
 }
 
