@@ -89,6 +89,8 @@ void PolynomialSum()
 
 	printf_s("Сумма многочленов: ");
 	PolynomOutput(sumPolynom);
+
+	funcExit();
 }
 
 void PolynomialSubstraction(){
@@ -126,6 +128,8 @@ void PolynomialSubstraction(){
 	printf_s("Разность многочленов: "); 
 	PolynomOutput(subPolynom); //вывод
 
+
+	funcExit();
 	//system("cls");
 }
 
@@ -136,7 +140,7 @@ void PolynomialMulti()
 		printf_s("\tУМНОЖЕНИЕ МНОГОЧЛЕНОВ\n");
 		printf_s("Введите степень первого многочлена: "); scanf_s("%d", &fact1.n); // Запрос степеней многочленов
 		printf_s("Введите степень второго многочлена: "); scanf_s("%d", &fact2.n);
-		if (fact1.n <= 0 || fact2.n <= 0) system("cls");
+		if (fact1.n <= 0 || fact2.n <= 0 || fact1.n >= 25 || fact2.n >= 25) system("cls");
 	} while (fact1.n <= 0 || fact2.n <= 0 || fact1.n >= 25 || fact2.n >= 25);
 
 	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
@@ -163,6 +167,8 @@ void PolynomialMulti()
 	printf_s("Произведение многочленов:");
 	PolynomOutput(Multi);
 
+
+	funcExit();
 	//system("cls");
 }
 
@@ -171,12 +177,19 @@ void PolynomialMultiNumber()
 	Polynomial pol;
 	double number;
 
-	printf_s("\tУМНОЖЕНИЕ МНОГОЧЛЕНА НА ЧИСЛО\n");
+	do {
+		printf_s("\tУМНОЖЕНИЕ МНОГОЧЛЕНА НА ЧИСЛО\n");
+		printf_s("Введите степень многочлена: "); scanf_s("%d", &pol.n); // Запрос степеней многочленов
+		if (pol.n <= 0 || pol.n > 50) system("cls");
+	} while (pol.n <= 0 || pol.n >= 50);
 
-	printf_s("Введите многочлен: ");
+	printf_s("Введите константы многочлена:\n");
 	PolynomInput(pol);
 
-	printf_s("Введите число: "); scanf_s("%lf", &number);
+	do {
+		printf_s("Введите число (кроме 0): "); scanf_s("%lf", &number);
+		if (number == 0) system("cls");
+	} while (number == 0);
 
 	printf_s("Введенный многочлен: ");
 	PolynomOutput(pol);
@@ -190,14 +203,40 @@ void PolynomialMultiNumber()
 	printf_s("Результат умножения: ");
 	PolynomOutput(pol);
 
+
+	funcExit();
 	//system("cls");
 }
 
 void PolynomialDerivative()
 {
-	printf_s("\tПРОИЗВОДНАЯ ОТ МНОГОЧЛЕНА\n");
-	printf_s("Введите многочлен: ");
-	system("cls");
+	Polynomial pol;
+
+	do {
+		printf_s("\tПРОИЗВОДНАЯ ОТ МНОГОЧЛЕНА\n");
+		printf_s("Введите степень многочлена: "); scanf_s("%d", &pol.n); // Запрос степеней многочленов
+		if (pol.n <= 0 || pol.n > 50) system("cls");
+	} while (pol.n <= 0 || pol.n >= 50);
+
+	printf_s("Введите константы многочлена:\n");
+	PolynomInput(pol);
+
+	printf_s("Введенный многочлен: ");
+	PolynomOutput(pol);
+
+	Polynomial polDer;
+	polDer.n = pol.n - 1;
+
+	for (int i = polDer.n; i >= 0; i--) {
+		polDer.c[i] = pol.c[i + 1] * (i + 1);
+	}
+
+	printf_s("Производная от многочлена: ");
+	PolynomOutput(polDer);
+
+
+	funcExit();
+	//system("cls");
 }
 
 void PolynomialDivision()
@@ -234,3 +273,15 @@ void PolynomOutput(Polynomial& slag)
 	else if (slag.c[0] == 1) printf_s("+1\n");
 	else if (slag.c[0] < 0) printf_s("%.3lf\n", slag.c[0]);
 }
+
+void funcExit()
+{
+	char choose;
+	do {
+		printf_s("Выйти в меню?\ny - Да\nВыбрано: "); choose = _getche();
+		if (choose == 'y') return;
+		else system("cls");
+	} while (choose != 'y');
+}
+
+

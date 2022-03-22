@@ -18,3 +18,5 @@ void PolynomialDivision(); //Деление
 
 void PolynomInput(Polynomial &slag); //Ввод многочлена
 void PolynomOutput(Polynomial& slag); //Вывод многочлена
+
+void funcExit(); //Выход из функции
