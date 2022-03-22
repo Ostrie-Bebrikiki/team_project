@@ -29,11 +29,15 @@ void menu_ver() {
 
 void ver() {
 	double m, n;
-	input_d1(m, "¬ведите m");
 	while (true) {
-		input_d1(n, "¬ведите n");
-		if (n > 0) break;
-		else cout << "n должна быть больше 0\n";
+		input_d1(m, "¬ведите m");
+		while (true) {
+			input_d1(n, "¬ведите n");
+			if (n > 0) break;
+			else cout << "n должна быть больше 0\n";
+		}
+		if (m > n)cout << "m не может быть больше n\n";
+		else break;
 	}
 	cout << "ќтвет: " << m / n;
 }
