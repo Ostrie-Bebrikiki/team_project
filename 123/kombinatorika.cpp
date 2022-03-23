@@ -50,6 +50,11 @@ void placement_with()
 				i = 0;
 				error = 0;
 				getline(cin, tmp);
+				if (tmp.empty() || tmp.length() >= 10)
+				{
+					printf_s("Неверный ввод.\n\n? : ");
+					error = 1;
+				}
 				while (i < tmp.length())
 				{
 					if (isdigit(tmp[i]) == 0)
@@ -79,6 +84,11 @@ void placement_with()
 				i = 0;
 				error = 0;
 				getline(cin, tmp);
+				if (tmp.empty() || tmp.length() >= 10)
+				{
+					printf_s("Неверный ввод.\n\n? : ");
+					error = 1;
+				}
 				while (i < tmp.length())
 				{
 					if (isdigit(tmp[i]) == 0)
@@ -138,6 +148,11 @@ void placement_without()
 				i = 0;
 				error = 0;
 				getline(cin, tmp);
+				if (tmp.empty() || tmp.length() >= 10)
+				{
+					printf_s("Неверный ввод.\n\n? : ");
+					error = 1;
+				}
 				while (i < tmp.length())
 				{
 					if (isdigit(tmp[i]) == 0)
@@ -166,6 +181,11 @@ void placement_without()
 				i = 0;
 				error = 0;
 				getline(cin, tmp);
+				if (tmp.empty() || tmp.length() >= 10)
+				{
+					printf_s("Неверный ввод.\n\n? : ");
+					error = 1;
+				}
 				while (i < tmp.length())
 				{
 					if (isdigit(tmp[i]) == 0)
@@ -230,6 +250,11 @@ void combination_with()
 				i = 0;
 				error = 0;
 				getline(cin, tmp);
+				if (tmp.empty() || tmp.length() >= 10)
+				{
+					printf_s("Неверный ввод.\n\n? : ");
+					error = 1;
+				}
 				while (i < tmp.length())
 				{
 					if (isdigit(tmp[i]) == 0)
@@ -258,6 +283,11 @@ void combination_with()
 				i = 0;
 				error = 0;
 				getline(cin, tmp);
+				if (tmp.empty() || tmp.length() >= 10)
+				{
+					printf_s("Неверный ввод.\n\n? : ");
+					error = 1;
+				}
 				while (i < tmp.length())
 				{
 					if (isdigit(tmp[i]) == 0)
@@ -294,7 +324,7 @@ void combination_with()
 			}
 		}
 
-		printf_s("\nОтвет : %lu\n", x);
+		printf_s("\nОтвет : %ul\n", x);
 
 		printf_s("\n1 - Вернуться в меню.\nЧтобы использовать калькулятор ещё раз, нажмите любую кнопку.\n\n? : ");
 		cmd = _getche();
@@ -326,6 +356,11 @@ void combination_without()
 				i = 0;
 				error = 0;
 				getline(cin, tmp);
+				if (tmp.empty() || tmp.length() >= 10)
+				{
+					printf_s("Неверный ввод.\n\n? : ");
+					error = 1;
+				}
 				while (i < tmp.length())
 				{
 					if (isdigit(tmp[i]) == 0)
@@ -354,6 +389,11 @@ void combination_without()
 				i = 0;
 				error = 0;
 				getline(cin, tmp);
+				if (tmp.empty() || tmp.length() >= 10)
+				{
+					printf_s("Неверный ввод.\n\n? : ");
+					error = 1;
+				}
 				while (i < tmp.length())
 				{
 					if (isdigit(tmp[i]) == 0)
@@ -427,7 +467,12 @@ void transposition_without()
 				i = 0;
 				error = 0;
 				getline(cin, tmp);
-				while (i < tmp.length())
+				if (tmp.empty())
+				{
+					printf_s("Неверный ввод.\n\n? : ");
+					error = 1;
+				}
+				while (i < tmp.length() || tmp.length() >= 10)
 				{
 					if (isdigit(tmp[i]) == 0)
 					{
@@ -484,6 +529,11 @@ void transposition_with()
 				i = 0;
 				error = 0;
 				getline(cin, tmp);
+				if (tmp.empty() || tmp.length() >= 10)
+				{
+					printf_s("Неверный ввод.\n\n? : ");
+					error = 1;
+				}
 				while (i < tmp.length())
 				{
 					if (isdigit(tmp[i]) == 0)
@@ -512,6 +562,11 @@ void transposition_with()
 				i = 0;
 				error = 0;
 				getline(cin, tmp);
+				if (tmp.empty() || tmp.length() >= 10)
+				{
+					printf_s("Неверный ввод.\n\n? : ");
+					error = 1;
+				}
 				while (i < tmp.length())
 				{
 					if (isdigit(tmp[i]) == 0)
