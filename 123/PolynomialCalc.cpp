@@ -267,22 +267,23 @@ void PolynomialDivision()
 
 	bool flag = true;
 	double mn;
+	int endofMassive = 0;
 	int k = 0;
 
 	while (flag) {
-		for (int i = div1.n; i >= 0; i--)
-			temp.c[i] = div1.c[i];
+		//for (int i = div1.n; i >= 0; i--)
+			//temp.c[i] = div1.c[i];
 
-		if (div1.n > div2.n) {
+		//if (div1.n > div2.n) {
 			for (int i = div1.n, j = div2.n; i >= 0; i--, j--)
 				if (j < 0)
 					temp.c[i] = 0;
 				else
 					temp.c[i] = div2.c[j];
-		}
+		//}
 
 		mn = div1.c[div1.n] / temp.c[div1.n];
-		res.c[k] = mn;
+		res.c[res.n - k] = mn;
 		k++;
 
 		for (int i = 0; i <= div1.n; i++)
