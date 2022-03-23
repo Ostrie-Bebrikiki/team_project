@@ -6,91 +6,82 @@ void MenuMatrix()
 {
     system("cls");
     setlocale(LC_ALL, "Russian");
-    int back = 1;
     int ex;
-    /*do {
-        cout << "Желаете использовать Матричный калькулятор?\n1.Да\t2.Нет (Вернуться в меню)\n";
-        cin >> back;
-        cin.clear();
-        while (cin.get() != '\n');
-    } while (back > 2 || back < 1);*/
-    if (back == 1) {
+    do {
+        system("cls");
+        double** A;
+        int m;
+        double d;
+        int n;
+        int choose;
+        Enter(n, m);
+        A = new double* [n];
+        for (int i = 0; i < n; i++)
+        {
+            A[i] = new double[m];
+        }
+
+        SetMatrix(n, m, A);
+        OutputMatrix(n, m, A);
         do {
-            system("cls");
-            double** A;
-            int m;
-            double d;
-            int n;
-            int choose;
-            Enter(n, m);
-            A = new double* [n];
-            for (int i = 0; i < n; i++)
+            cout << "\nСделайте выбор:\n1.Найти определитель \n2.Транспонировать матрицу \n3.Умножить матрицы\n4.Вычитание матриц\n5.Сложить матрицы\n6.Умножить матрицу на число\n7.Сложить матрицу и число\n8.Найти обратную матрицу\n0.Выход из матричного калькулятора\n";
+            cin >> choose;
+            cin.clear();
+            while (cin.get() != '\n');
+
+        } while (choose < 0 || choose> 8);
+        if (choose == 1) { // Определитель
+            if (m == n) {
+                d = Determinant(A, m);
+                cout << "\n Определитель равен = " << d;
+            }
+            else cout << "Матрица не квадратная , вычислить определитель невозможно";
+
+        }
+        if (choose == 2) {// Транспонирование
+            double** tA;
+            tA = new double* [m];
+            for (int i = 0; i < m; i++)
             {
-                A[i] = new double[m];
+                tA[i] = new double[n];
             }
+            TransponMtx(A, tA, n, m);
+            OutputMatrix(m, n, tA);
+            FreeMem(m, n, tA);
+        }
+        if (choose == 3) { // Умножение
+            MultiplMatrix(n, m, A);
+        }
+        if (choose == 4) { // Вычитание матриц
+            DiffMatrix(n, m, A);
+        }
+        if (choose == 5) {// Сложение матриц
+            SummMartrix(n, m, A);
 
-            SetMatrix(n, m, A);
-            OutputMatrix(n, m, A);
-            do {
-                cout << "\nСделайте выбор:\n1.Найти определитель \n2.Транспонировать матрицу \n3.Умножить матрицы\n4.Вычитание матриц\n5.Сложить матрицы\n6.Умножить матрицу на число\n7.Сложить матрицу и число\n8.Найти обратную матрицу\n0.Выход из матричного калькулятора\n";
-                cin >> choose;
-                cin.clear();
-                while (cin.get() != '\n');
-
-            } while (choose < 0 || choose> 8);
-            if (choose == 1) { // Определитель
-                if (m == n) {
-                    d = Determinant(A, m);
-                    cout << "\n Определитель равен = " << d;
+        }
+        if (choose == 6) {
+            MultiplNumber(n, m, A);
+        }
+        if (choose == 7) {
+            SummNumber(n, m, A);
+        }
+        if (choose == 8) {
+            if (m == n) {
+                if (Determinant(A, m) != 0) {
+                    inversionMatrix(A, n);
                 }
-                else cout << "Матрица не квадратная , вычислить определитель невозможно";
-
+                else cout << "Определитель матрицы равен 0, обратную матрицу найти нельзя\n";
             }
-            if (choose == 2) {// Транспонирование
-                double** tA;
-                tA = new double* [m];
-                for (int i = 0; i < m; i++)
-                {
-                    tA[i] = new double[n];
-                }
-                TransponMtx(A, tA, n, m);
-                OutputMatrix(m, n, tA);
-                FreeMem(m, n, tA);
-            }
-            if (choose == 3) { // Умножение
-                MultiplMatrix(n, m, A);
-            }
-            if (choose == 4) { // Вычитание матриц
-                DiffMatrix(n, m, A);
-            }
-            if (choose == 5) {// Сложение матриц
-                SummMartrix(n, m, A);
-
-            }
-            if (choose == 6) {
-                MultiplNumber(n, m, A);
-            }
-            if (choose == 7) {
-                SummNumber(n, m, A);
-            }
-            if (choose == 8) {
-                if (m == n) {
-                    if (Determinant(A, m) != 0) {
-                        inversionMatrix(A, n);
-                    }
-                    else cout << "Определитель матрицы равен 0, обратную матрицу найти нельзя\n";
-                }
-                else cout << "Матрица не квадратная , найти обратную невозможно";
-            }
-            FreeMem(n, m, A);
-            do {
-                cout << "\nЖелаете выйти из матричного калькулятора?\n1.Да\t2.Нет\n";
-                cin >> ex;
-                cin.clear();
-                while (cin.get() != '\n');
-            } while (ex > 2 || ex < 1);
-        } while (ex == 2);
-    }
+            else cout << "Матрица не квадратная , найти обратную невозможно";
+        }
+        FreeMem(n, m, A);
+        do {
+            cout << "\nЖелаете выйти из матричного калькулятора?\n1.Да\t2.Нет\n";
+            cin >> ex;
+            cin.clear();
+            while (cin.get() != '\n');
+        } while (ex > 2 || ex < 1);
+    } while (ex == 2);
 }
 
 void Enter(int& n, int& m) {
