@@ -271,9 +271,6 @@ void PolynomialDivision()
 	int k = 0;
 
 	while (flag) {
-		//for (int i = div1.n; i >= 0; i--)
-			//temp.c[i] = div1.c[i];
-
 		//if (div1.n > div2.n) {
 			for (int i = div1.n, j = div2.n; i >= 0; i--, j--)
 				if (j < 0)
