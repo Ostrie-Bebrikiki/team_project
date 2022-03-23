@@ -4,9 +4,11 @@
 #include <conio.h>
 #include <iostream>
 #include <string>
+#include<sstream>
 #include "SDL.h"
 #include <math.h>
 #include <windows.h>
+#include <iomanip>
 using namespace std;
 
 void input_d(double& a, std::string str) {
@@ -41,7 +43,10 @@ void input(int& a, std::string str) {
 }
 double f(char ch, double x, double a, double b, double c, double d) {
 	switch (ch) {
-	case '2': return (x < 0 && double((int)b) != b ? -a : a) * pow((x < 0 && double((int)b) != b ? -x : x), b) + c;
+	case '1': {
+
+	}
+	case '2': return a * pow(x, b) + c;
 	case '3': return a * pow(b, c * x) + d;
 	case '4': return a * log(b * x) + c;
 	case '5': return a * sin(b * x + c) + d;
@@ -69,6 +74,113 @@ void choose(char& s) {
 	}
 }
 
+int DrawNum(SDL_Renderer* renderer, char num, int32_t centreX, int32_t centreY, int h) {
+	switch (num) {
+	case'1': {
+		SDL_RenderDrawLine(renderer, centreX, centreY, centreX, centreY + h);
+		return 3 * h / 8;
+		break;
+	}
+	case'2': {
+		SDL_RenderDrawLine(renderer, centreX, centreY, centreX + h / 2, centreY);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY, centreX + h / 2, centreY + h / 4);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY + h / 4, centreX, centreY + h);
+		SDL_RenderDrawLine(renderer, centreX, centreY + h, centreX + h / 2, centreY + h);
+		return 3 * h / 4;
+		break;
+	}
+	case'3': {
+		SDL_RenderDrawLine(renderer, centreX, centreY, centreX + h / 2, centreY);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY + h, centreX + h / 2, centreY);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY + h / 2, centreX, centreY + h / 2);
+		SDL_RenderDrawLine(renderer, centreX, centreY + h, centreX + h / 2, centreY + h);
+		return 3 * h / 4;
+		break;
+	}
+	case'4': {
+		SDL_RenderDrawLine(renderer, centreX, centreY, centreX, centreY + h / 2);
+		SDL_RenderDrawLine(renderer, centreX, centreY + h / 2, centreX + h / 2, centreY + h / 2);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY + h, centreX + h / 2, centreY);
+		return 3 * h / 4;
+		break;
+	}
+	case'5': {
+		SDL_RenderDrawLine(renderer, centreX, centreY, centreX + h / 2, centreY);
+		SDL_RenderDrawLine(renderer, centreX, centreY, centreX, centreY + h / 2);
+		SDL_RenderDrawLine(renderer, centreX, centreY + h / 2, centreX + h / 2, centreY + h / 2);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY + h / 2, centreX + h / 2, centreY + h);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY + h, centreX, centreY + h);
+		return 3 * h / 4;
+		break;
+	}
+	case'6': {
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY, centreX, centreY + h / 2);
+		SDL_RenderDrawLine(renderer, centreX, centreY + h / 2, centreX + h / 2, centreY + h / 2);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY + h / 2, centreX + h / 2, centreY + h);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY + h, centreX, centreY + h);
+		SDL_RenderDrawLine(renderer, centreX, centreY + h, centreX, centreY + h / 2);
+		return 3 * h / 4;
+		break;
+	}
+	case'7': {
+		SDL_RenderDrawLine(renderer, centreX, centreY, centreX + h / 2, centreY);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY, centreX, centreY + h);
+		return 3 * h / 4;
+		break;
+	}
+	case'8': {
+		SDL_RenderDrawLine(renderer, centreX, centreY, centreX + h / 2, centreY);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY, centreX + h / 2, centreY + h / 4);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY + h / 4, centreX, centreY + 3 * h / 4);
+		SDL_RenderDrawLine(renderer, centreX, centreY + 3 * h / 4, centreX, centreY + h);
+		SDL_RenderDrawLine(renderer, centreX, centreY + h, centreX + h / 2, centreY + h);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY + h, centreX + h / 2, centreY + 3 * h / 4);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY + 3 * h / 4, centreX, centreY + h / 4);
+		SDL_RenderDrawLine(renderer, centreX, centreY + h / 4, centreX, centreY);
+		return 3 * h / 4;
+		break;
+	}
+	case'9': {
+		SDL_RenderDrawLine(renderer, centreX, centreY, centreX + h / 2, centreY);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY, centreX + h / 2, centreY + h / 2);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY + h / 2, centreX, centreY + h / 2);
+		SDL_RenderDrawLine(renderer, centreX, centreY + h / 2, centreX, centreY);
+		SDL_RenderDrawLine(renderer, centreX + h / 2, centreY + h / 2, centreX, centreY + h);
+		return 3 * h / 4;
+		break;
+	}
+	case'0': {
+		SDL_RenderDrawLine(renderer, centreX, centreY, centreX + 2 * h / 4, centreY);
+		SDL_RenderDrawLine(renderer, centreX, centreY, centreX, centreY + h);
+		SDL_RenderDrawLine(renderer, centreX, centreY + h, centreX + 2 * h / 4, centreY + h);
+		SDL_RenderDrawLine(renderer, centreX + 2 * h / 4, centreY, centreX + 2 * h / 4, centreY + h);
+		return 3 * h / 4;
+		break;
+	}
+	case'-': {
+		SDL_RenderDrawLine(renderer, centreX, centreY + h/2, centreX + h/2, centreY + h/2);
+		return 3 * h / 4;
+	}
+	case'.': {
+		SDL_RenderDrawLine(renderer, centreX, centreY + h, centreX + h/8, centreY + h);
+		SDL_RenderDrawLine(renderer, centreX, centreY + 7 * h / 8, centreX + h / 8, centreY + 7 * h / 8);
+		SDL_RenderDrawLine(renderer, centreX, centreY + 7 * h / 8, centreX, centreY + h);
+		SDL_RenderDrawLine(renderer, centreX + h/8, centreY + 7*h/8, centreX + h / 8, centreY + h);
+		return 3 * h / 8;
+	}
+	default: return 0;
+	}
+}
+void DrawBigNum(SDL_Renderer* renderer, double num, int32_t centreX, int32_t centreY, int h) {
+	int hi = 0;
+	stringstream ss;
+	num = int(num * 10)/10.0f;
+	ss << num;
+	string str = ss.str();
+	for (int i = 0; i < str.length(); i++) {
+		hi += DrawNum(renderer, str[i], centreX + hi, centreY, h);
+	}
+}
 void integral(char ch, double a, double b, double c, double d);
 void graph(char ch, double a, double b, double c, double d);
 void root_f(char ch, double a, double b, double c, double d);
