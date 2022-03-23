@@ -16,5 +16,6 @@ void MultiplMatrix(int n, int m, double** A);
 void MultiplNumber(int n, int m, double** A);
 void SummNumber(int n, int m, double** A);
 void inversionMatrix(double** A, int n);
+void FreeMem(int n, int m, double** A);
 
 #endif MatrixCaulculatorHeader
