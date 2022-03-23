@@ -261,11 +261,45 @@ void PolynomialDivision()
 	printf_s("Второй многочлен: ");
 	PolynomOutput(div2);
 
-	Polynomial res;
-	
+	Polynomial res, temp;
+	temp.n = div1.n;
+	res.n = div1.n - div2.n;
 
+	bool flag = true;
+	double mn;
+	int k = 0;
 
-	system("cls");
+	while (flag) {
+		for (int i = div1.n; i >= 0; i--)
+			temp.c[i] = div1.c[i];
+
+		if (div1.n > div2.n) {
+			for (int i = div1.n, j = div2.n; i >= 0; i--, j--)
+				if (j < 0)
+					temp.c[i] = 0;
+				else
+					temp.c[i] = div2.c[j];
+		}
+
+		mn = div1.c[div1.n] / temp.c[div1.n];
+		res.c[k] = mn;
+		k++;
+
+		for (int i = 0; i <= div1.n; i++)
+			temp.c[i] *= mn;
+		for (int i = 0; i <= div1.n; i++)
+			div1.c[i] -= temp.c[i];
+
+		div1.n--;
+		if (div2.n > div1.n) flag = false;
+	}
+
+	printf_s("Результат деления: ");
+	PolynomOutput(res);
+
+	funcExit();
+
+	//system("cls");
 }
 
 void PolynomInput(Polynomial &slag)
