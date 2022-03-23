@@ -50,7 +50,7 @@ void placement_with()
 				i = 0;
 				error = 0;
 				getline(cin, tmp);
-				if (tmp.empty() || tmp.length() >= 10)
+				if (tmp.empty() || tmp.length() >= 1)
 				{
 					printf_s("Неверный ввод.\n\n? : ");
 					error = 1;
