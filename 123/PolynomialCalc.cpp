@@ -261,6 +261,8 @@ void PolynomialDivision()
 	printf_s("Второй многочлен: ");
 	PolynomOutput(div2);
 
+	Polynomial res;
+	
 
 
 	system("cls");
