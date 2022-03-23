@@ -1,4 +1,5 @@
 #include "bebra.h"
+//даня виноват
 
 int main(int argc, char** argv) {
 	SetConsoleOutputCP(1251);
