@@ -173,7 +173,7 @@ void placement_without()
 			}
 		} while (n <= 1);
 
-		printf_s("Введите количество позиций k (k < n): ");
+		printf_s("Введите количество позиций k (k <= n): ");
 		do
 		{
 			do
@@ -200,11 +200,11 @@ void placement_without()
 
 			k = stoi(tmp, 0, 10);
 
-			if (k >= n || k < 1)
+			if (k > n || k < 1)
 			{
 				printf_s("Неверный ввод.\n\n? : ");
 			}
-		} while (k >= n || k < 1);
+		} while (k > n || k < 1);
 
 		for (int i = 1; i <= n; i++)
 		{
