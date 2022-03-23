@@ -10,6 +10,7 @@
 #include <string>
 #include <cmath>
 #include <locale.h>
+#include <iomanip>
 
 void MenuMatrix();
 void menu_ver();

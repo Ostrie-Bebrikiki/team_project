@@ -4,41 +4,57 @@
 
 void MenuMatrix()
 {
-    system("cls");
     setlocale(LC_ALL, "Russian");
-    int ex;
-    do {
-        system("cls");
-        double** A;
-        int m;
-        double d;
-        int n;
-        int choose;
-        Enter(n, m);
-        A = new double* [n];
-        for (int i = 0; i < n; i++)
+    double** A;
+    int m;
+    double d;
+    int n;
+    char choose;
+
+    while (true) 
+    {
+        while (true) 
         {
-            A[i] = new double[m];
-        }
+            system("cls");
+            cout << "Выберите действие\n1 - Найти определитель \n2 - Транспонировать матрицу \n3 - Умножить матрицы\n4 - Вычитание матриц\n5 - Сложить матрицы\
+6 - Умножить матрицу на число\n7 - Сложить матрицу и число\n8 - Найти обратную матрицу\n0 - Выход в главное меню\n";
+            choose = _getche();
+            if (choose == '1' || choose == '2' || choose == '3' || choose == '4' || choose == '5' || choose == '6' || choose == '7' || choose == '8' || choose == '0')
+            {
+                system("cls");
+                break;
+            }
+            system("cls");
+        } 
+        if (choose == '1') { // Определитель
+            Enter(n, m);
+            A = new double* [n];
+            for (int i = 0; i < n; i++)
+            {
+                A[i] = new double[m];
+            }
 
-        SetMatrix(n, m, A);
-        OutputMatrix(n, m, A);
-        do {
-            cout << "\nСделайте выбор:\n1.Найти определитель \n2.Транспонировать матрицу \n3.Умножить матрицы\n4.Вычитание матриц\n5.Сложить матрицы\n6.Умножить матрицу на число\n7.Сложить матрицу и число\n8.Найти обратную матрицу\n0.Выход из матричного калькулятора\n";
-            cin >> choose;
-            cin.clear();
-            while (cin.get() != '\n');
-
-        } while (choose < 0 || choose> 8);
-        if (choose == 1) { // Определитель
+            SetMatrix(n, m, A);
+            OutputMatrix(n, m, A);
             if (m == n) {
                 d = Determinant(A, m);
-                cout << "\n Определитель равен = " << d;
+                cout << "\nОпределитель равен = " << d << endl;
+
             }
-            else cout << "Матрица не квадратная , вычислить определитель невозможно";
+            else cout << "Матрица не квадратная, вычислить определитель невозможно" << endl;
+            FreeMem(n, m, A);
 
         }
-        if (choose == 2) {// Транспонирование
+        if (choose == '2') {// Транспонирование
+            Enter(n, m);
+            A = new double* [n];
+            for (int i = 0; i < n; i++)
+            {
+                A[i] = new double[m];
+            }
+
+            SetMatrix(n, m, A);
+            OutputMatrix(n, m, A);
             double** tA;
             tA = new double* [m];
             for (int i = 0; i < m; i++)
@@ -48,43 +64,105 @@ void MenuMatrix()
             TransponMtx(A, tA, n, m);
             OutputMatrix(m, n, tA);
             FreeMem(m, n, tA);
+            FreeMem(n, m, A);
         }
-        if (choose == 3) { // Умножение
+        if (choose == '3') { // Умножение
+            Enter(n, m);
+            A = new double* [n];
+            for (int i = 0; i < n; i++)
+            {
+                A[i] = new double[m];
+            }
+
+            SetMatrix(n, m, A);
+            OutputMatrix(n, m, A);
             MultiplMatrix(n, m, A);
+            FreeMem(n, m, A);
         }
-        if (choose == 4) { // Вычитание матриц
+        if (choose == '4') { // Вычитание матриц
+            Enter(n, m);
+            A = new double* [n];
+            for (int i = 0; i < n; i++)
+            {
+                A[i] = new double[m];
+            }
+
+            SetMatrix(n, m, A);
+            OutputMatrix(n, m, A);
             DiffMatrix(n, m, A);
+            FreeMem(n, m, A);
         }
-        if (choose == 5) {// Сложение матриц
+        if (choose == '5') {// Сложение матриц
+            Enter(n, m);
+            A = new double* [n];
+            for (int i = 0; i < n; i++)
+            {
+                A[i] = new double[m];
+            }
+
+            SetMatrix(n, m, A);
+            OutputMatrix(n, m, A);
             SummMartrix(n, m, A);
+            FreeMem(n, m, A);
 
         }
-        if (choose == 6) {
+        if (choose == '6') {
+            Enter(n, m);
+            A = new double* [n];
+            for (int i = 0; i < n; i++)
+            {
+                A[i] = new double[m];
+            }
+
+            SetMatrix(n, m, A);
+            OutputMatrix(n, m, A);
             MultiplNumber(n, m, A);
+            FreeMem(n, m, A);
         }
-        if (choose == 7) {
+        if (choose == '7') {
+            Enter(n, m);
+            A = new double* [n];
+            for (int i = 0; i < n; i++)
+            {
+                A[i] = new double[m];
+            }
+
+            SetMatrix(n, m, A);
+            OutputMatrix(n, m, A);
             SummNumber(n, m, A);
+            FreeMem(n, m, A);
         }
-        if (choose == 8) {
+        if (choose == '8') {
+            Enter(n, m);
+            A = new double* [n];
+            for (int i = 0; i < n; i++)
+            {
+                A[i] = new double[m];
+            }
+
+            SetMatrix(n, m, A);
+            OutputMatrix(n, m, A);
             if (m == n) {
                 if (Determinant(A, m) != 0) {
                     inversionMatrix(A, n);
+                    FreeMem(n, m, A);
                 }
-                else cout << "Определитель матрицы равен 0, обратную матрицу найти нельзя\n";
+                else cout << "Определитель матрицы равен 0, обратную матрицу найти нельзя" << endl;
             }
-            else cout << "Матрица не квадратная , найти обратную невозможно";
+            else cout << "Матрица не квадратная , найти обратную невозможно" << endl;
         }
-        FreeMem(n, m, A);
-        do {
-            cout << "\nЖелаете выйти из матричного калькулятора?\n1.Да\t2.Нет\n";
-            cin >> ex;
-            cin.clear();
-            while (cin.get() != '\n');
-        } while (ex > 2 || ex < 1);
-    } while (ex == 2);
+
+        if (choose == '0')
+        {
+            return;
+        }
+
+        system("pause");
+    }
 }
 
 void Enter(int& n, int& m) {
+    cout << "\nВвод строк и столбцов\n";
     do {
         cout << "Введите количество строк: "; //введите количество строк
         cin >> n;
@@ -123,10 +201,12 @@ void OutputMatrix(int n, int m, double** A) //вывод матрицы 1
     {
         for (int j = 0; j < m; j++)
         {
+            cout << fixed << showpoint << setprecision(3);
             cout << A[i][j] << "\t";
         }
         cout << endl;
     }
+    cout << "\n";
 }
 void GetMatr(double** A, double** p, int i, int j, int m) { // для Определителя
     int ki, kj, di, dj;
@@ -183,12 +263,13 @@ void DiffMatrix(int n, int m, double** A) {
     {
         B[i] = new double[mb];
     }
-    SetMatrix(nb, mb, B);
+
     if (nb != n || mb != m) {
         cout << "Совершить вычитание невозможно , размеры матриц не равны";
     }
     else
     {
+        SetMatrix(nb, mb, B);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 A[i][j] = A[i][j] - B[i][j];
@@ -207,13 +288,14 @@ void SummMartrix(int n, int m, double** A) {
     {
         B[i] = new double[mb];
     }
-    SetMatrix(nb, mb, B);
+
     if (nb != n || mb != m) {
         cout << "Совершить сложение невозможно , размеры матриц не равны";
 
     }
     else
     {
+        SetMatrix(nb, mb, B);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 A[i][j] = A[i][j] + B[i][j];
@@ -232,7 +314,6 @@ void MultiplMatrix(int n, int m, double** A) {
     {
         B[i] = new double[mb];
     }
-    SetMatrix(nb, mb, B);
     int nc, mc; // Для умножения матриц
     double** C;
     C = new double* [mb];
@@ -240,8 +321,12 @@ void MultiplMatrix(int n, int m, double** A) {
     {
         C[i] = new double[n];
     }
-
     if (m == nb) {
+        SetMatrix(nb, mb, B);
+
+
+
+
         cout << "Матрица (C = AB):\n";
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < mb; j++) {
@@ -368,6 +453,7 @@ void inversionMatrix(double** A, int n)
     {
         for (int j = 0; j < n; j++)
         {
+            cout << fixed << showpoint << setprecision(4);
             cout << B[i][j] << "\t";
         }
         cout << endl;
