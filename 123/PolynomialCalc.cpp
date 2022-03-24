@@ -197,6 +197,8 @@ void PolynomialMultiNumber()
 {
 	Polynomial pol;
 	double number;
+	string num;
+	int countComma = 0;
 
 	do {
 		printf_s("\tУМНОЖЕНИЕ МНОГОЧЛЕНА НА ЧИСЛО\n");
@@ -204,16 +206,31 @@ void PolynomialMultiNumber()
 		if (pol.n <= 0 || pol.n > 50) system("cls");
 	} while (pol.n <= 0 || pol.n >= 50);
 
-	printf_s("Введите константы многочлена:\n");
+	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
 	if (PolynomInput(pol) == false) {
-		printf_s("Было введено некорректное значение");
-		funcExit();
+		printf_s("Было введено некорректное значение\n");
+		if (funcExit() == true) return;
 	}
 
 	do {
-		printf_s("Введите число (кроме 0): "); scanf_s("%lf", &number);
-		if (number == 0) system("cls");
-	} while (number == 0);
+		printf_s("Введите число (кроме 0): "); cin >> num;
+		if (stoi(num) == 0) system("cls");
+	} while (stoi(num) == 0);
+
+	for (int i = 0; i < num.length(); i++) {
+		if (num[i] == '.') num[i] = ',';
+		if (num[i] == ',') countComma++;
+		if (isdigit(num[i]) == 0 && (ispunct(num[i]) == 0 && num[i] != ',')) {
+			printf_s("Было введено некорректное значение\n");
+			if (funcExit() == true) return;
+		}
+		else if (countComma > 1) {
+			printf_s("Было введено некорректное значение\n");
+			if (funcExit() == true) return;
+		}
+	}
+
+	number = stof(num);
 
 	printf_s("Введенный многочлен: ");
 	PolynomOutput(pol);
@@ -243,7 +260,10 @@ void PolynomialDerivative()
 	} while (pol.n <= 0 || pol.n >= 50);
 
 	printf_s("Введите константы многочлена:\n");
-	PolynomInput(pol);
+	if (PolynomInput(pol) == false) {
+		printf_s("Было введено некорректное значение\n");
+		if (funcExit() == true) return;
+	}
 
 	printf_s("Введенный многочлен: ");
 	PolynomOutput(pol);
@@ -274,10 +294,16 @@ void PolynomialDivision()
 	} while (div1.n <= 0 || div2.n <= 0 || div1.n > 50 || div2.n > 50 || div2.n > div1.n);
 
 	printf_s("Введите константы первого многочленена:\n");
-	PolynomInput(div1);
+	if (PolynomInput(div1) == false) {
+		printf_s("Было введено некорректное значение\n");
+		if (funcExit() == true) return;
+	}
 
 	printf_s("Введите константы второго многочленена:\n");
-	PolynomInput(div2);
+	if (PolynomInput(div2) == false) {
+		printf_s("Было введено некорректное значение\n");
+		if (funcExit() == true) return;
+	}
 
 	printf_s("Первый многочлен: ");
 	PolynomOutput(div1);
