@@ -64,9 +64,16 @@ void PolynomialSum()
 	} while (slag1.n <= 0 || slag2.n <= 0 || slag1.n >= 50 || slag2.n >= 50);
 
 	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
-	PolynomInput(slag1);
+	if (PolynomInput(slag1) == false) {
+		printf_s("Было введено некорректное значение\n");
+		if (funcExit() == true) return;
+	}
+
 	printf_s("Введите константы второго многочлена: \n");
-	PolynomInput(slag2);
+	if (PolynomInput(slag2) == false) {
+		printf_s("Было введено некорректное значение\n");
+		if (funcExit() == true) return;
+	}
 
 	printf_s("Первый многочлен: "); // Вывод первого многочлена
 	PolynomOutput(slag1);
@@ -103,9 +110,16 @@ void PolynomialSubstraction(){
 	} while (sub1.n <= 0 || sub2.n <= 0 || sub1.n >= 50 || sub2.n >= 50);
 
 	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
-	PolynomInput(sub1);
+	if (PolynomInput(sub1) == false) {
+		printf_s("Было введено некорректное значение\n");
+		if (funcExit() == true) return;
+	}
+
 	printf_s("Введите константы второго многочлена: \n");
-	PolynomInput(sub2);
+	if (PolynomInput(sub2) == false) {
+		printf_s("Было введено некорректное значение\n");
+		if (funcExit() == true) return;
+	}
 
 	printf_s("Первый многочлен: "); // Вывод первого многочлена
 	PolynomOutput(sub1);
@@ -144,9 +158,16 @@ void PolynomialMulti()
 	} while (fact1.n <= 0 || fact2.n <= 0 || fact1.n >= 25 || fact2.n >= 25);
 
 	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
-	PolynomInput(fact1);
+	if (PolynomInput(fact1) == false) {
+		printf_s("Было введено некорректное значение");
+		if (funcExit() == true) return;
+	}
+
 	printf_s("Введите константы второго многочлена: \n");
-	PolynomInput(fact2);
+	if (PolynomInput(fact2) == false) {
+		printf_s("Было введено некорректное значение");
+		if (funcExit() == true) return;
+	}
 
 	printf_s("Первый многочлен: "); // Вывод первого многочлена
 	PolynomOutput(fact1);
@@ -176,6 +197,8 @@ void PolynomialMultiNumber()
 {
 	Polynomial pol;
 	double number;
+	string num;
+	int countComma = 0;
 
 	do {
 		printf_s("\tУМНОЖЕНИЕ МНОГОЧЛЕНА НА ЧИСЛО\n");
@@ -183,13 +206,31 @@ void PolynomialMultiNumber()
 		if (pol.n <= 0 || pol.n > 50) system("cls");
 	} while (pol.n <= 0 || pol.n >= 50);
 
-	printf_s("Введите константы многочлена:\n");
-	PolynomInput(pol);
+	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
+	if (PolynomInput(pol) == false) {
+		printf_s("Было введено некорректное значение\n");
+		if (funcExit() == true) return;
+	}
 
 	do {
-		printf_s("Введите число (кроме 0): "); scanf_s("%lf", &number);
-		if (number == 0) system("cls");
-	} while (number == 0);
+		printf_s("Введите число (кроме 0): "); cin >> num;
+		if (stoi(num) == 0) system("cls");
+	} while (stoi(num) == 0);
+
+	for (int i = 0; i < num.length(); i++) {
+		if (num[i] == '.') num[i] = ',';
+		if (num[i] == ',') countComma++;
+		if (isdigit(num[i]) == 0 && (ispunct(num[i]) == 0 && num[i] != ',')) {
+			printf_s("Было введено некорректное значение\n");
+			if (funcExit() == true) return;
+		}
+		else if (countComma > 1) {
+			printf_s("Было введено некорректное значение\n");
+			if (funcExit() == true) return;
+		}
+	}
+
+	number = stof(num);
 
 	printf_s("Введенный многочлен: ");
 	PolynomOutput(pol);
@@ -219,7 +260,10 @@ void PolynomialDerivative()
 	} while (pol.n <= 0 || pol.n >= 50);
 
 	printf_s("Введите константы многочлена:\n");
-	PolynomInput(pol);
+	if (PolynomInput(pol) == false) {
+		printf_s("Было введено некорректное значение\n");
+		if (funcExit() == true) return;
+	}
 
 	printf_s("Введенный многочлен: ");
 	PolynomOutput(pol);
@@ -250,10 +294,16 @@ void PolynomialDivision()
 	} while (div1.n <= 0 || div2.n <= 0 || div1.n > 50 || div2.n > 50 || div2.n > div1.n);
 
 	printf_s("Введите константы первого многочленена:\n");
-	PolynomInput(div1);
+	if (PolynomInput(div1) == false) {
+		printf_s("Было введено некорректное значение\n");
+		if (funcExit() == true) return;
+	}
 
 	printf_s("Введите константы второго многочленена:\n");
-	PolynomInput(div2);
+	if (PolynomInput(div2) == false) {
+		printf_s("Было введено некорректное значение\n");
+		if (funcExit() == true) return;
+	}
 
 	printf_s("Первый многочлен: ");
 	PolynomOutput(div1);
@@ -261,18 +311,67 @@ void PolynomialDivision()
 	printf_s("Второй многочлен: ");
 	PolynomOutput(div2);
 
-	Polynomial res;
-	
+	Polynomial res, temp;
+	temp.n = div1.n;
+	res.n = div1.n - div2.n;
 
+	bool flag = true;
+	double mn;
+	int endofMassive = 0;
+	int k = 0;
 
-	system("cls");
+	while (flag) {
+		//if (div1.n > div2.n) {
+			for (int i = div1.n, j = div2.n; i >= 0; i--, j--)
+				if (j < 0)
+					temp.c[i] = 0;
+				else
+					temp.c[i] = div2.c[j];
+		//}
+
+		mn = div1.c[div1.n] / temp.c[div1.n];
+		res.c[res.n - k] = mn;
+		k++;
+
+		for (int i = 0; i <= div1.n; i++)
+			temp.c[i] *= mn;
+		for (int i = 0; i <= div1.n; i++)
+			div1.c[i] -= temp.c[i];
+
+		div1.n--;
+		if (div2.n > div1.n) flag = false;
+	}
+
+	printf_s("Результат деления: ");
+	PolynomOutput(res);
+
+	funcExit();
+
+	//system("cls");
 }
 
-void PolynomInput(Polynomial &slag)
+bool PolynomInput(Polynomial &slag)
 {
-	for (int i = slag.n; i >= 0; i--) {
-		printf_s("c%d = ", i); scanf_s("%lf", &slag.c[i]);
+	bool flag = true;
+	string number;
+	int k, countDots, countComma;
+	for (int j = slag.n; j >= 0; j--) {
+		countComma = 0;
+		printf_s("c[%d] = ", j); cin >> number;
+		for (int i = 0; i < number.length(); i++) {
+			if (number[i] == '.') number[i] = ',';
+			if (number[i] == ',') countComma++;
+			if (isdigit(number[i]) == 0 && (ispunct(number[i]) == 0 && number[i] != ','))
+				flag = false;
+			else if (countComma > 1) flag = false;
+			if (flag == false) break;
+		}
+		if (flag == false) return false;
+		else {
+			slag.c[j] = stof(number);
+		}
 	}
+	return true;
 }
 
 void PolynomOutput(Polynomial& slag)
@@ -295,14 +394,15 @@ void PolynomOutput(Polynomial& slag)
 	else if (slag.c[0] < 0) printf_s("%.3lf\n", slag.c[0]);
 }
 
-void funcExit()
+bool funcExit()
 {
 	char choose;
 	do {
 		printf_s("Выйти в меню?\ny - Да\nВыбрано: "); choose = _getche();
-		if (choose == 'y') return;
+		if (choose == 'y') return true;
 		else system("cls");
 	} while (choose != 'y');
 }
+
 
 
