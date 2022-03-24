@@ -9,11 +9,11 @@ int main(int argc, char** argv) {
 
 	while (true) {
 		while (true) {
-			cout << "Выберите вид калькулятора" << endl << "1 - Матричный"<< endl << "2 - Обыкновенных дробей" 
+			cout << "Выберите вид калькулятора" << endl << "1 - Матричный" << endl << "2 - Обыкновенных дробей"
 				<< endl << "3 - Формул комбинаторики" << endl << "4 - Теории вероятностей и мат. статистики" << endl
-				<<"5 - Многочленов"<< endl << "6 - Работа с фунциями" << endl << '>';
+				<< "5 - Многочленов" << endl << "6 - Работа с фунциями" << endl << "0 - Выход" << endl << '>';
 			s = _getche();
-			if (s == '1' || s == '2' || s == '3' || s == '4' || s == '5' || s == '6') break;
+			if (s == '1' || s == '2' || s == '3' || s == '4' || s == '5' || s == '6' || s == '0') break;
 			system("cls");
 		}
 		cout << endl;
@@ -25,6 +25,7 @@ int main(int argc, char** argv) {
 			case '4': menu_ver(); break;
 			case '5': PolynomialMenu(); break;
 			case '6': menu_Func(); break;
+			case '0': return 0;
 			default: break;
 		}
 		system("cls");

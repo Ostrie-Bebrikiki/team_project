@@ -162,19 +162,30 @@ void MenuMatrix()
 }
 
 void Enter(int& n, int& m) {
-    cout << "\n¬вод строк и столбцов\n";
+    cout << "¬вод строк и столбцов\n";
     do {
         cout << "¬ведите количество строк: "; //введите количество строк
-        cin >> n;
-        cin.clear();
-        while (cin.get() != '\n');
+
+        while (!(cin >> n) || (cin.peek() != '\n'))
+        {
+            cin >> n;
+            cin.clear();
+            while (cin.get() != '\n');
+
+        }
 
     } while (n < 1);
     do {
         cout << "¬ведите количетсво столбцов: "; //введите количество столбцов
-        cin >> m;
-        cin.clear();
-        while (cin.get() != '\n');
+
+        while (!(cin >> m) || (cin.peek() != '\n'))
+        {
+            cin >> m;
+            cin.clear();
+            while (cin.get() != '\n');
+
+
+        }
 
     } while (m < 1);
 }
@@ -186,9 +197,16 @@ void SetMatrix(int n, int m, double** A) // ввод матрицы 1
         for (int j = 0; j < m; j++)
         {
             cout << "[" << i << "][" << j << "]="; //вывод "i" и "j"
-            cin >> A[i][j]; //ввод это в массив "A"
-            cin.clear();
-            while (cin.get() != '\n');
+
+
+            while (!(cin >> A[i][j]) || (cin.peek() != '\n'))
+            {
+                cout << "[" << i << "][" << j << "]=";
+                cin >> A[i][j]; //ввод это в массив "A"
+                cin.clear();
+                while (cin.get() != '\n');
+
+            }
         }
     }
 }
