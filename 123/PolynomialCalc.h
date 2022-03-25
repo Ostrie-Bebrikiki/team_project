@@ -22,6 +22,6 @@ bool PolynomInput(Polynomial &slag); //Ввод многочлена
 void PolynomOutput(Polynomial& slag); //Вывод многочлена
 
 
-bool funcExit(); //Выход из функции
+//bool funcExit(); //Выход из функции
 
 #endif PolynomialCalc

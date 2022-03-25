@@ -419,8 +419,9 @@ void PolynomialDivision()
 	printf_s("Результат деления: ");
 	PolynomOutput(res);
 
-	funcExit();
-
+	system("pause");
+	system("cls");
+	//funcExit();
 	//system("cls");
 }
 
@@ -488,7 +489,7 @@ int Kor(string num)
 	return 0;
 }
 
-bool funcExit()
+/*bool funcExit()
 {
 	char choose;
 	do {
@@ -497,6 +498,7 @@ bool funcExit()
 		else system("cls");
 	} while (choose != 'y');
 }
+*/ //увы гуреня попросил меня выпилить это "потому что это фигня какая-то"
 
 
 
