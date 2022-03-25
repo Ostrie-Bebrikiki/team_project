@@ -52,10 +52,8 @@ void PolynomialMenu()
 		case '5': PolynomialDerivative(); break;
 		case '6': PolynomialDivision(); break;
 		case '0': {
-			do {
 				system("cls");
 				return;
-			} while (choose != 'y' || choose != 'n');
 		}; break;
 		default: break;
 		}
@@ -330,10 +328,11 @@ void PolynomialDerivative()
 
 	Polynomial polDer;
 	polDer.n = pol.n - 1;
-
-	for (int i = polDer.n; i >= 0; i--) {
+	int i = polDer.n;
+	for (i; i > 0; i--) {
 		polDer.c[i] = pol.c[i + 1] * (i + 1);
 	}
+	polDer.c[0] = pol.c[1];
 
 	printf_s("Производная от многочлена: ");
 	PolynomOutput(polDer);
@@ -453,21 +452,25 @@ bool PolynomInput(Polynomial &slag)
 void PolynomOutput(Polynomial& slag)
 {
 	if (slag.c[slag.n] == 1) printf_s("x^%d", slag.n);
-	else if (slag.c[slag.n] > 1 || slag.c[slag.n] < 0) printf_s("%.3lfx^%d", slag.c[slag.n], slag.n);
+	else if (slag.c[slag.n] > 1 || slag.c[slag.n] < 0) printf_s("%.1lfx^%d", slag.c[slag.n], slag.n);
 
-	for (int i = slag.n - 1; i >= 2; i--) {
-		if (slag.c[i] > 1) printf_s("+%.3lfx^%d", slag.c[i], i);
-		else if (slag.c[i] == 1) printf_s("+x^%d", i);
-		else if (slag.c[i] < 0) printf_s("%.3lfx^%d", slag.c[i], i);
+	for (int i = slag.n - 1; i >= 0; i--) {
+		if (i == 0) {
+			if (slag.c[i] > 1) printf_s("+%.1lf\n", slag.c[0]);//Для x^0
+			else if (slag.c[i] == 1) printf_s("+1\n");
+			else if (slag.c[i] < 0) printf_s("%.1lf\n", slag.c[0]);
+		}
+		else if (i == 1) {
+			if (slag.c[i] > 1) printf_s("+%.1lfx", slag.c[i]);
+			else if (slag.c[i] == 1) printf_s("+x");
+			else if (slag.c[i] < 0) printf_s("%.1lfx", slag.c[i]);
+		}
+		else {
+			if (slag.c[i] > 1) printf_s("+%.1lfx^%d", slag.c[i], i);
+			else if (slag.c[i] == 1) printf_s("+x^%d", i);
+			else if (slag.c[i] < 0) printf_s("%.1lfx^%d", slag.c[i], i);
+		}
 	}
-
-	if (slag.c[1] > 1) printf_s("+%.3lfx", slag.c[1]);//Для x^1
-	else if (slag.c[1] == 1) printf_s("+x");
-	else if (slag.c[1] < 0) printf_s("%.3lfx", slag.c[1]);
-
-	if (slag.c[0] > 1) printf_s("+%.3lf\n", slag.c[0]);//Для x^0
-	else if (slag.c[0] == 1) printf_s("+1\n");
-	else if (slag.c[0] < 0) printf_s("%.3lf\n", slag.c[0]);
 }
 
 int Kor(string num)
