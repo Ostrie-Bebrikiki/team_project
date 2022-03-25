@@ -89,7 +89,7 @@ void integral(char& ch, double& a, double& b, double& c, double& d) {
 		cout << "Ответ: " << sum1 - sum;
 	}
 }
-//При 123 рисует 124
+
 void graph(char& ch, double& a, double& b, double& c, double& d) {
 	const int WIDTH = 1500, HEIGHT = 800;
 	const int width = 49 * WIDTH / 50, height = 49 * HEIGHT / 50;
