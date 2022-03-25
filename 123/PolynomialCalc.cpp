@@ -27,16 +27,15 @@ void PolynomialMenu()
 	do {
 		do {
 			system("cls");
-			printf_s("\tКАЛЬКУЛЯТОР МНОГОЧЛЕНОВ\n");
 			printf_s("Выберите действие:\n");
-			printf_s("1: Сложение\n");
-			printf_s("2: Вычитание\n");
-			printf_s("3: Умножение\n");
-			printf_s("4: Умножение на число\n");
-			printf_s("5: Производная\n");
-			printf_s("6: Деление\n");
-			printf_s("0: Выйти\n");
-			printf_s("Выбрано: "); choose = _getche();
+			printf_s("1 - Сложение\n");
+			printf_s("2 - Вычитание\n");
+			printf_s("3 - Умножение\n");
+			printf_s("4 - Умножение на число\n");
+			printf_s("5 - Производная\n");
+			printf_s("6 - Деление\n");
+			printf_s("0 - Выход в главное меню\n");
+			choose = _getche();
 			if (choose < '0' || choose > '6') {
 				system("cls");
 			}
