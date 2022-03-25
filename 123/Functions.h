@@ -15,14 +15,14 @@ void input_d(double& a, std::string str) {
 	while (true) {
 		std::cout << str << ": ";
 		std::string str1;
-		std::getline(cin, str1);
+		std::getline(std::cin, str1);
 		for (int i = 0; i < str1.length(); i++) if (str1[i] == '.') str1[i] = ',';
 		if (str1.length() > 0) {
-			if (std::isalnum(str1[0])) {
+			if (std::isdigit(str1[0])) {
 				a = std::stod(str1);
 				break;
 			}
-			else if(str1.length() > 1) if (str1[0] == '-' && std::isalnum(str1[1])) {
+			else if(str1.length() > 1) if (str1[0] == '-' && std::isdigit(str1[1])) {
 				a = std::stod(str1);
 				break;
 			}
@@ -35,14 +35,14 @@ void input(int& a, std::string str) {
 	while (true) {
 		std::cout << str << ": ";
 		std::string str1;
-		std::getline(cin, str1);
+		std::getline(std::cin, str1);
 		for (int i = 0; i < str1.length(); i++) if (str1[i] == '.') str1[i] = ',';
 		if (str1.length() > 0) {
-			if (std::isalnum(str1[0])) {
+			if (std::isdigit(str1[0])) {
 				a = std::stoi(str1);
 				break;
 			}
-			else if (str1.length() > 1) if (str1[0] == '-' && std::isalnum(str1[1])) {
+			else if (str1.length() > 1) if (str1[0] == '-' && std::isdigit(str1[1])) {
 				a = std::stoi(str1);
 				break;
 			}
@@ -51,7 +51,7 @@ void input(int& a, std::string str) {
 	}
 }
 
-double f(char& ch, double& x, double& a, double& b, double& c, double& d) {
+double f(char& ch, double x, double& a, double& b, double& c, double& d) {
 	switch (ch) {
 	case '2': return a * pow(x, b) + c;
 	case '3': return a * pow(b, c * x) + d;
@@ -202,7 +202,7 @@ void DrawBigNum(SDL_Renderer* renderer, double num, int32_t centreX, int32_t cen
 	}
 }
 
-double dih(bool proizv, char &ch, double &D1, double &D2, double& a, double& b, double& c, double& d) {
+double dih(bool proizv, char &ch, double D1, double D2, double& a, double& b, double& c, double& d) {
 	const double epsilon = 0.0001;
 	double j;
 	if (!proizv) {
@@ -227,7 +227,7 @@ double dih(bool proizv, char &ch, double &D1, double &D2, double& a, double& b, 
 	}
 }
 
-double PoliF(double& x,double* A, int& N) {
+double PoliF(double x,double* A, int& N) {
 	double x1 = 1;
 	double q = 0;
 	for (int i = 0; i < N; i++) {
@@ -237,7 +237,7 @@ double PoliF(double& x,double* A, int& N) {
 	return q;
 }
 
-double PoliF1(double& x, double* A, int& N) {
+double PoliF1(double x, double* A, int& N) {
 	double x1 = 1;
 	double q = 0;
 	int u = 1;
@@ -248,7 +248,7 @@ double PoliF1(double& x, double* A, int& N) {
 	return q;
 }
 
-double PoliDih(bool proizv, double& D1, double& D2, double* A, int& N) {
+double PoliDih(bool proizv, double D1, double D2, double* A, int& N) {
 	const double epsilon = 0.0001;
 	double j;
 	if (proizv) {
@@ -272,8 +272,8 @@ double PoliDih(bool proizv, double& D1, double& D2, double* A, int& N) {
 	return (D1 + D2) / 2;
 }
 
-void integral(char ch, double a, double b, double c, double d);
-void graph(char ch, double a, double b, double c, double d);
-void root_f(char ch, double a, double b, double c, double d);
-void extremum(char ch, double a, double b, double c, double d);
+void integral(char& ch, double& a, double& b, double& c, double& d);
+void graph(char& ch, double& a, double& b, double& c, double& d);
+void root_f(char& ch, double& a, double& b, double& c, double& d);
+void extremum(char& ch, double& a, double& b, double& c, double& d);
 #endif

@@ -9,31 +9,40 @@ using namespace std;
 void input_d1(double& a, std::string str) {
 	while (true) {
 		std::cout << str << ": ";
-		std::cin >> a;
-		if (std::cin.fail())
-		{
-			std::cin.clear();
-			std::cin.ignore(32767, '\n');
-			std::cout << "Îøèáêà ââîäà" << std::endl;
+		std::string str1;
+		std::getline(std::cin, str1);
+		for (int i = 0; i < str1.length(); i++) if (str1[i] == '.') str1[i] = ',';
+		if (str1.length() > 0) {
+			if (std::isdigit(str1[0])) {
+				a = std::stod(str1);
+				break;
+			}
+			else if (str1.length() > 1) if (str1[0] == '-' && std::isdigit(str1[1])) {
+				a = std::stod(str1);
+				break;
+			}
 		}
-		else {
-			break;
-		}
+		std::cout << "Îøèáêà ââîäà" << std::endl;
 	}
 }
+
 void input1(int& a, std::string str) {
 	while (true) {
 		std::cout << str << ": ";
-		std::cin >> a;
-		if (std::cin.fail())
-		{
-			std::cin.clear();
-			std::cin.ignore(32767, '\n');
-			std::cout << "Îøèáêà ââîäà" << std::endl;
+		std::string str1;
+		std::getline(std::cin, str1);
+		for (int i = 0; i < str1.length(); i++) if (str1[i] == '.') str1[i] = ',';
+		if (str1.length() > 0) {
+			if (std::isdigit(str1[0])) {
+				a = std::stoi(str1);
+				break;
+			}
+			else if (str1.length() > 1) if (str1[0] == '-' && std::isdigit(str1[1])) {
+				a = std::stoi(str1);
+				break;
+			}
 		}
-		else {
-			break;
-		}
+		std::cout << "Îøèáêà ââîäà" << std::endl;
 	}
 }
 
