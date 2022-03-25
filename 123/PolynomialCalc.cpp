@@ -6,11 +6,27 @@
 
 bool NumberCorrect(string num)
 {
+	//int countCom = 0;
+	for (int i = 0; i < num.length(); i++) {
+		/*if (num[i] == '.') num[i] = ',';
+		if (num[i] == ',') countCom++;*/
+		if (isdigit(num[i]) == 0 /* &num[i] != ','*/) {
+			return false;
+		}
+		/*lse if (countCom > 1) {
+			return false;
+		}*/
+	}
+	return true;
+}
+
+bool NumberCorrectN(string num)
+{
 	int countCom = 0;
 	for (int i = 0; i < num.length(); i++) {
 		if (num[i] == '.') num[i] = ',';
 		if (num[i] == ',') countCom++;
-		if (isdigit(num[i]) == 0 && num[i] != ',') {
+		if (isdigit(num[i]) == 0 && num[i] != ',' && num[i] != '-') {
 			return false;
 		}
 		else if (countCom > 1) {
@@ -272,7 +288,7 @@ void PolynomialMultiNumber()
 
 	printf_s("¬ведите число : "); cin >> num;
 
-	NumberCorrect(num);
+	NumberCorrectN(num);
 
 	number = stof(num);
 
