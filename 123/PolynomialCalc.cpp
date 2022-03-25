@@ -4,6 +4,22 @@
 //Функции калькулятора многочленов
 //Ответственный - Коростелев
 
+bool NumberCorrect(string num)
+{
+	int countCom = 0;
+	for (int i = 0; i < num.length(); i++) {
+		if (num[i] == '.') num[i] = ',';
+		if (num[i] == ',') countCom++;
+		if (isdigit(num[i]) == 0 && num[i] != ',') {
+			return false;
+		}
+		else if (countCom > 1) {
+			return false;
+		}
+	}
+	return true;
+}
+
 void PolynomialMenu()
 {
 	char choose;
@@ -17,7 +33,7 @@ void PolynomialMenu()
 			printf_s("2: Вычитание\n");
 			printf_s("3: Умножение\n");
 			printf_s("4: Умножение на число\n");
-			printf_s("5: Производная\"\n");
+			printf_s("5: Производная\n");
 			printf_s("6: Деление\n");
 			printf_s("0: Выйти\n");
 			printf_s("Выбрано: "); choose = _getche();
@@ -56,12 +72,21 @@ void PolynomialMenu()
 void PolynomialSum()
 {
 	Polynomial slag1, slag2;
+	string n1, n2;
+	int flag1, flag2;
 	do {
-		printf_s("\tСЛОЖЕНИЕ МНОГОЧЛЕНОВ\n");
-		printf_s("Введите степень первого многочлена: "); scanf_s("%d", &slag1.n); // Запрос степеней многочленов
-		printf_s("Введите степень второго многочлена: "); scanf_s("%d", &slag2.n);
-		if (slag1.n <= 0 || slag2.n <= 0) system("cls");
-	} while (slag1.n <= 0 || slag2.n <= 0 || slag1.n >= 50 || slag2.n >= 50);
+		printf_s("\tСЛОЖЕНИЕ МНОГОЧЛЕНОВ\n");// Запрос степеней многочленов
+		printf_s("Введите степень первого многочлена: "); cin >> n1; //scanf_s("%d", &slag1.n);
+		printf_s("Введите степень второго многочлена: "); cin >> n2; //scanf_s("%d", &slag2.n);
+		if (NumberCorrect(n1) == false || NumberCorrect(n2) == false) system("cls");
+		else {
+			slag1.n = stoi(n1);
+			slag2.n = stoi(n2);
+			if (slag1.n <= 0 || slag2.n <= 0 || slag1.n >= 50 || slag2.n >= 50) system("cls");
+		}
+	} while (slag1.n <= 0 || slag2.n <= 0 || slag1.n >= 50 || slag2.n >= 50 || NumberCorrect(n1) == false || NumberCorrect(n2) == false);
+
+	
 
 	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
 	if (PolynomInput(slag1) == false) {
@@ -102,12 +127,18 @@ void PolynomialSum()
 
 void PolynomialSubstraction(){
 	Polynomial sub1, sub2;
+	string n1, n2;
 	do {
-		printf_s("\tВЫЧИТАНИЕ МНОГОЧЛЕНОВ\n");
-		printf_s("Введите степень первого многочлена: "); scanf_s("%d", &sub1.n); // Запрос степеней многочленов
-		printf_s("Введите степень второго многочлена: "); scanf_s("%d", &sub2.n);
-		if (sub1.n <= 0 || sub2.n <= 0) system("cls");
-	} while (sub1.n <= 0 || sub2.n <= 0 || sub1.n >= 50 || sub2.n >= 50);
+		printf_s("\tВЫЧИТАНИЕ МНОГОЧЛЕНОВ\n");// Запрос степеней многочленов
+		printf_s("Введите степень первого многочлена: "); cin >> n1; //scanf_s("%d", &slag1.n);
+		printf_s("Введите степень второго многочлена: "); cin >> n2; //scanf_s("%d", &slag2.n);
+		if (NumberCorrect(n1) == false || NumberCorrect(n2) == false) system("cls");
+		else {
+			sub1.n = stoi(n1);
+			sub2.n = stoi(n2);
+			if (sub1.n <= 0 || sub2.n <= 0 || sub1.n >= 50 || sub2.n >= 50) system("cls");
+		}
+	} while (sub1.n <= 0 || sub2.n <= 0 || sub1.n >= 50 || sub2.n >= 50 || NumberCorrect(n1) == false || NumberCorrect(n2) == false);
 
 	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
 	if (PolynomInput(sub1) == false) {
@@ -150,12 +181,21 @@ void PolynomialSubstraction(){
 void PolynomialMulti()
 {
 	Polynomial fact1, fact2;
+	string n1, n2;
 	do {
-		printf_s("\tУМНОЖЕНИЕ МНОГОЧЛЕНОВ\n");
-		printf_s("Введите степень первого многочлена: "); scanf_s("%d", &fact1.n); // Запрос степеней многочленов
-		printf_s("Введите степень второго многочлена: "); scanf_s("%d", &fact2.n);
-		if (fact1.n <= 0 || fact2.n <= 0 || fact1.n >= 25 || fact2.n >= 25) system("cls");
-	} while (fact1.n <= 0 || fact2.n <= 0 || fact1.n >= 25 || fact2.n >= 25);
+		printf_s("\tУМНОЖЕНИЕ МНОГОЧЛЕНОВ\n");// Запрос степеней многочленов
+		printf_s("Введите степень первого многочлена: "); cin >> n1; //scanf_s("%d", &slag1.n);
+		printf_s("Введите степень второго многочлена: "); cin >> n2; //scanf_s("%d", &slag2.n);
+		if (NumberCorrect(n1) == false || NumberCorrect(n2) == false) system("cls");
+		else {
+			fact1.n = stoi(n1);
+			fact2.n = stoi(n2);
+			if (fact1.n <= 0 || fact2.n <= 0 || fact1.n >= 50 || fact2.n >= 50) system("cls");
+		}
+	} while (fact1.n <= 0 || fact2.n <= 0 || fact1.n >= 50 || fact2.n >= 50 || NumberCorrect(n1) == false || NumberCorrect(n2) == false);
+
+	//ct1.n = stoi(n1);
+	//fact2.n = stoi(n2);
 
 	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
 	if (PolynomInput(fact1) == false) {
@@ -199,12 +239,18 @@ void PolynomialMultiNumber()
 	double number;
 	string num;
 	int countComma = 0;
+	string n1;
+
 
 	do {
-		printf_s("\tУМНОЖЕНИЕ МНОГОЧЛЕНА НА ЧИСЛО\n");
-		printf_s("Введите степень многочлена: "); scanf_s("%d", &pol.n); // Запрос степеней многочленов
-		if (pol.n <= 0 || pol.n > 50) system("cls");
-	} while (pol.n <= 0 || pol.n >= 50);
+		printf_s("\tУМНОЖЕНИЕ МНОГОЧЛЕНА НА ЧИСЛО\n");// Запрос степеней многочленов
+		printf_s("Введите степень многочлена: "); cin >> n1;
+		if (NumberCorrect(n1) == false) system("cls");
+		else {
+			pol.n = stoi(n1);
+			if (pol.n <= 0 || pol.n >= 50) system("cls");
+		}
+	} while (pol.n <= 0 || pol.n >= 50 || NumberCorrect(n1) == false);
 
 	printf_s("Введите константы первого многочлена: \n"); //Ввод констант многочленов
 	if (PolynomInput(pol) == false) {
@@ -217,18 +263,7 @@ void PolynomialMultiNumber()
 		if (stoi(num) == 0) system("cls");
 	} while (stoi(num) == 0);
 
-	for (int i = 0; i < num.length(); i++) {
-		if (num[i] == '.') num[i] = ',';
-		if (num[i] == ',') countComma++;
-		if (isdigit(num[i]) == 0 && (ispunct(num[i]) == 0 && num[i] != ',')) {
-			printf_s("Было введено некорректное значение\n");
-			if (funcExit() == true) return;
-		}
-		else if (countComma > 1) {
-			printf_s("Было введено некорректное значение\n");
-			if (funcExit() == true) return;
-		}
-	}
+	NumberCorrect(num);
 
 	number = stof(num);
 
@@ -252,12 +287,18 @@ void PolynomialMultiNumber()
 void PolynomialDerivative()
 {
 	Polynomial pol;
+	string n1;
 
 	do {
-		printf_s("\tПРОИЗВОДНАЯ ОТ МНОГОЧЛЕНА\n");
-		printf_s("Введите степень многочлена: "); scanf_s("%d", &pol.n); // Запрос степеней многочленов
-		if (pol.n <= 0 || pol.n > 50) system("cls");
-	} while (pol.n <= 0 || pol.n >= 50);
+		printf_s("\tСЛОЖЕНИЕ МНОГОЧЛЕНОВ\n");// Запрос степеней многочленов
+		printf_s("Введите степень многочлена: "); cin >> n1;
+		if (NumberCorrect(n1) == false) system("cls");
+		else {
+			pol.n = stoi(n1);
+			if (pol.n <= 0 || pol.n >= 25) system("cls");
+		}
+	} while (pol.n <= 0 || pol.n >= 25 || NumberCorrect(n1) == false);
+	//pol.n = stoi(n1);
 
 	printf_s("Введите константы многочлена:\n");
 	if (PolynomInput(pol) == false) {
@@ -286,12 +327,19 @@ void PolynomialDerivative()
 void PolynomialDivision()
 {
 	Polynomial div1, div2;
+	string n1, n2;
+
 	do {
-		printf_s("\tДЕЛЕНИЕ МНОГОЧЛЕНОВ\n");
-		printf_s("Введите степень первого многочлена: "); scanf_s("%d", &div1.n); // Запрос степеней многочленов
-		printf_s("Введите степень второго многочлена: "); scanf_s("%d", &div2.n);
-		if (div1.n <= 0 || div2.n <= 0 || div1.n > 50 || div2.n > 50 || div2.n > div1.n) system("cls");
-	} while (div1.n <= 0 || div2.n <= 0 || div1.n > 50 || div2.n > 50 || div2.n > div1.n);
+		printf_s("\tДЕЛЕНИЕ МНОГОЧЛЕНОВ\n");// Запрос степеней многочленов
+		printf_s("Введите степень первого многочлена: "); cin >> n1;
+		printf_s("Введите степень второго многочлена: "); cin >> n2;
+		if (NumberCorrect(n1) == false || NumberCorrect(n2) == false) system("cls");
+		else {
+			div1.n = stoi(n1);
+			div2.n = stoi(n2);
+			if (div1.n <= 0 || div1.n >= 50 || div2.n <= 0 || div2.n >= 50) system("cls");
+		}
+	} while (div1.n <= 0 || div1.n >= 50 || div2.n <= 0 || div2.n >= 50 || NumberCorrect(n1) == false || NumberCorrect(n2) == false);
 
 	printf_s("Введите константы первого многочленена:\n");
 	if (PolynomInput(div1) == false) {
@@ -393,6 +441,27 @@ void PolynomOutput(Polynomial& slag)
 	else if (slag.c[0] == 1) printf_s("+1\n");
 	else if (slag.c[0] < 0) printf_s("%.3lf\n", slag.c[0]);
 }
+
+int Kor(string num)
+{
+	int countComma = 0;
+	for (int i = 0; i < num.length(); i++) {
+		if (num[i] == '.') num[i] = ',';
+		if (num[i] == ',') countComma++;
+		if (isdigit(num[i]) == 0 && num[i] != ',') {
+			printf_s("Было введено некорректное значение\n");
+			return 1;
+		}
+		else if (countComma > 1) {
+			printf_s("Было введено некорректное значение\n");
+			return 1;
+		}
+	}
+	return 0;
+}
+
+
+
 
 bool funcExit()
 {
