@@ -41,7 +41,7 @@ void menu_Func() {
 		case '4': extremum(ch, a, b, c, d); break;
 		default: break;
 		}
-		cout << endl << "Продолжить?";
+		cout << endl << "Продолжить?\nДля выхода введите n";
 		s = tolower(_getche());
 		if (s == 'n' || s == 'т') break;
 		system("cls");
@@ -89,6 +89,7 @@ void integral(char ch, double a, double b, double c, double d) {
 		cout << "Ответ: " << sum1 - sum;
 	}
 }
+//При 123 рисует 124
 void graph(char ch, double a, double b, double c, double d) {
 	const int WIDTH = 1500, HEIGHT = 800;
 	const int width = 49 * WIDTH / 50, height = 49 * HEIGHT / 50;
@@ -118,7 +119,7 @@ void graph(char ch, double a, double b, double c, double d) {
 		input_d(D2, "Введите правую границу");
 		if (D1 == 0.0f && D2 == 0.0f) return;
 		else if (D2 < D1) cout << "Левая граница не может быть больше правой" << endl;
-		else if (D2 > 1000 || D1 < -1000) cout << "Слишком большой дипазон" << endl;
+		else if ((abs(D1) > abs(D2) ? 2 * abs(D1) : 2 * abs(D2))> WIDTH/2.0f) cout << "Слишком большой дипазон" << endl;
 		else if (ch == '4' && D1 < 0) cout << "Данная функция существует на (0;+оо)" << endl;
 		else if (ch == '3' && b < 0 && double((int)c) != c) {
 			cout << "Невозможно построить график функции с возведением отрицательного числа в нечетную степень\n";
@@ -145,13 +146,13 @@ void graph(char ch, double a, double b, double c, double d) {
 		scalx *= 10;
 	}
 	cout << endl << "h  = " << h << "  hy = " << hy<<endl;
-	for (i1 = WIDTH / 2 + h; (float)i1 <= 199 * WIDTH / 200.0f; i1 += h) {
+	for (i1 = WIDTH / 2 + h; (float)i1 <= 99.1* WIDTH / 100.0f; i1 += h) {
 		SDL_RenderDrawLine(renderer, i1, HEIGHT / 2 - HEIGHT / 100, i1, HEIGHT / 2 + HEIGHT / 100);
 		j+=scalx;
 	}
 	i1 -= h;
 	DrawBigNum(renderer, j, i1 -3*HEIGHT/100, HEIGHT / 2 + HEIGHT / 30, HEIGHT / 50);
-	for (i2 = WIDTH / 2 - h; (float)i2 >= WIDTH / 200.0f; i2 -= h) {
+	for (i2 = WIDTH / 2 - h; (float)i2 >= 0.9*WIDTH / 100.0f; i2 -= h) {
 		SDL_RenderDrawLine(renderer, i2, HEIGHT / 2 - HEIGHT / 100, i2, HEIGHT / 2 + HEIGHT / 100);
 	}
 	i2 += h;
@@ -162,13 +163,13 @@ void graph(char ch, double a, double b, double c, double d) {
 		hy *= 10;
 		scaly *= 10;
 	}
-	for (i3 = HEIGHT / 2 + hy; (float)i3 <= 199*HEIGHT /200.0f; i3 += hy) {
+	for (i3 = HEIGHT / 2 + hy; (float)i3 <= 99.1*HEIGHT /100.0f; i3 += hy) {
 		SDL_RenderDrawLine(renderer, WIDTH / 2 - WIDTH / 400, i3, WIDTH / 2 + WIDTH / 400, i3);
 		j += scaly;
 	}
 	i3 -= hy;
 	DrawBigNum(renderer, -j, WIDTH / 2 + WIDTH / 100, i3 - HEIGHT / 50, HEIGHT / 50);
-	for (i4 = HEIGHT / 2 - hy; (float)i4 >= HEIGHT / 200.0f; i4 -= hy) {
+	for (i4 = HEIGHT / 2 - hy; (float)i4 >= 0.9*HEIGHT / 100.0f; i4 -= hy) {
 		SDL_RenderDrawLine(renderer, WIDTH / 2 - WIDTH / 400, i4, WIDTH / 2 + WIDTH / 400, i4);
 	}
 	i4 += hy;
@@ -177,35 +178,33 @@ void graph(char ch, double a, double b, double c, double d) {
 	SDL_RenderDrawLine(renderer, i2, HEIGHT / 2, i1, HEIGHT / 2);
 	SDL_RenderDrawLine(renderer, WIDTH / 2, i3, WIDTH / 2, i4);
 	SDL_SetRenderDrawColor(renderer, colourR, colourG, colourB, 0);
-	
+	h = h / scalx;
+	hy = hy / scaly;
 	if (ch != '1') {
 		double y1 = HEIGHT / 2 - f(ch, D1, a, b, c, d) * hy, x1 = (WIDTH / 2) + (D1 * h), y, x;
 		for (double i = D1; i <= D2; i += 1.0f / h) {
 			x = (WIDTH / 2) + (i * h);
 			y = HEIGHT / 2 - f(ch, i, a, b, c, d) * hy;
-			if (y <= 0) y = 0;
-			else if (y > HEIGHT)y = HEIGHT;
-			if (y == 0 && y1 == HEIGHT) y1 = 0;
-			if (y == HEIGHT && y1 == 0)y1 = HEIGHT;
+			if (y >= HEIGHT && y1 <= 0) y1 = HEIGHT + 1;
+			else if (y <= 0 && y1 >= HEIGHT) y1 = -1;
+			if (y >= HEIGHT) y = HEIGHT + 1;
+			else if (y <= 0) y = -1;
 			SDL_RenderDrawLine(renderer, x1, y1, x, y);
-			x1 = x, y1 = y;
-			SDL_RenderPresent(renderer);
+			x1 = x, y1 = y;		
 		}
+		SDL_RenderPresent(renderer);
 	}
 	else {
 		double y1 = HEIGHT / 2 - PoliF(D1,A,N) * hy, x1 = (WIDTH / 2) + (D1 * h), y, x;
 		for (double i = D1; i <= D2; i += 1.0f / h) {
 			x = (WIDTH / 2) + (i * h);
 			y = HEIGHT / 2 - PoliF(i, A, N) * hy;
-			if (y <= 0) y = 0;
-			else if (y > HEIGHT)y = HEIGHT;
-			if (y == 0 && y1 == HEIGHT) y1 = 0;
-			if (y == HEIGHT && y1 == 0)y1 = HEIGHT;
+			if (y >= HEIGHT && y1 <= 0) y1 = HEIGHT + 1;
+			else if (y <= 0 && y1 >= HEIGHT) y1 = -1;
 			SDL_RenderDrawLine(renderer, x1, y1, x, y);
 			x1 = x, y1 = y;
-
-			SDL_RenderPresent(renderer);
 		}
+		SDL_RenderPresent(renderer);
 	}
 
 
@@ -267,8 +266,8 @@ void root_f(char ch, double a, double b, double c, double d) {
 				else break;
 		}
 	}
-	if (ch != '1')cout << dih(true, ch, D1, D2, a, b, c, d);
-	else cout << PoliDih('0', D1, D2, A, N);
+	if (ch != '1')cout << dih(false, ch, D1, D2, a, b, c, d);
+	else cout << PoliDih(false, D1, D2, A, N);
 
 }
 void extremum(char ch, double a, double b, double c, double d) {
@@ -309,6 +308,6 @@ void extremum(char ch, double a, double b, double c, double d) {
 				else break;
 		}
 	}
-	if (ch != '1')cout << dih(false, ch, D1, D2, a, b, c, d);
-	else cout << PoliDih('1', D1, D2, A, N);
+	if (ch != '1')cout << dih(true, ch, D1, D2, a, b, c, d);
+	else cout << PoliDih(true, D1, D2, A, N);
 }

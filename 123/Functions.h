@@ -202,10 +202,10 @@ void DrawBigNum(SDL_Renderer* renderer, double num, int32_t centreX, int32_t cen
 	}
 }
 
-double dih(bool ab, char &ch, double &D1, double &D2, double& a, double& b, double& c, double& d) {
+double dih(bool proizv, char &ch, double &D1, double &D2, double& a, double& b, double& c, double& d) {
 	const double epsilon = 0.0001;
 	double j;
-	if (ab) {
+	if (!proizv) {
 		while (D2 - D1 > epsilon) {
 			j = (D2 + D1) / 2;
 			if (f(ch, D2, a, b, c, d) * f(ch, j, a, b, c, d) < 0)

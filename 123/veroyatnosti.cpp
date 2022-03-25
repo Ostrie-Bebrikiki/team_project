@@ -20,7 +20,7 @@ void menu_ver() {
 		case '0': return;
 		default: break;
 		}
-		cout << endl << "Продолжить?";
+		cout << endl << "Продолжить?\nДля выхода введите n";
 		s = tolower(_getche());
 		if (s == 'n' || s == 'т') break;
 		system("cls");
