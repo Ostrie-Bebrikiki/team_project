@@ -31,6 +31,7 @@ void ver() {
 	double m, n;
 	while (true) {
 		input_d1(m, "¬ведите m");
+		if (m < 0) cout << "m должна быть больше или равна 0\n";
 		while (true) {
 			input_d1(n, "¬ведите n");
 			if (n > 0) break;
