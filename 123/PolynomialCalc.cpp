@@ -468,6 +468,7 @@ bool PolynomInput(Polynomial &slag)
 void PolynomOutput(Polynomial& slag)
 {
 	if (slag.c[slag.n] == 1) printf_s("x^%d", slag.n);
+	else if (slag.n == 0) printf_s("%.2lf\n", slag.c[slag.n]);
 	else printf_s("%.2lfx^%d", slag.c[slag.n], slag.n);
 
 	for (int i = slag.n - 1; i >= 0; i--) {
