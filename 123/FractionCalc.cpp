@@ -20,9 +20,9 @@ void MenuFraction()
             cout << "5 - Сравнение двух дробей" << endl;
             cout << "6 - Сокращение дроби" << endl;
             cout << "7 - Представить дробь в десятичном виде" << endl;
-            cout << "8 - Выход в главное меню" << endl;
+            cout << "0 - Выход в главное меню" << endl;
             menu = _getche();
-        } while (menu < '1' || menu > '8');
+        } while (menu < '0' || menu > '7');
         double Nums[4] = { 1,1,1,1 };
 
         double numerator;
@@ -93,7 +93,7 @@ void MenuFraction()
         }
         break;
         }
-    } while (menu != '8');
+    } while (menu != '0');
 }
 
 

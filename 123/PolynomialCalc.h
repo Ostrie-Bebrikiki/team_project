@@ -1,4 +1,6 @@
 #pragma once
+#ifndef PolynomialCalc
+#define PolynomialCalc
 
 //Заголовочный файл для калькулятора многочленов
 //Ответственный - Коростелев
@@ -19,4 +21,7 @@ void PolynomialDivision(); //Деление
 bool PolynomInput(Polynomial &slag); //Ввод многочлена
 void PolynomOutput(Polynomial& slag); //Вывод многочлена
 
+
 bool funcExit(); //Выход из функции
+
+#endif PolynomialCalc
