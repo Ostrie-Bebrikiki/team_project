@@ -6,11 +6,27 @@
 
 bool NumberCorrect(string num)
 {
+	//int countCom = 0;
+	for (int i = 0; i < num.length(); i++) {
+		/*if (num[i] == '.') num[i] = ',';
+		if (num[i] == ',') countCom++;*/
+		if (isdigit(num[i]) == 0 /* &num[i] != ','*/) {
+			return false;
+		}
+		/*lse if (countCom > 1) {
+			return false;
+		}*/
+	}
+	return true;
+}
+
+bool NumberCorrectN(string num)
+{
 	int countCom = 0;
 	for (int i = 0; i < num.length(); i++) {
 		if (num[i] == '.') num[i] = ',';
 		if (num[i] == ',') countCom++;
-		if (isdigit(num[i]) == 0 && num[i] != ',') {
+		if (isdigit(num[i]) == 0 && num[i] != ',' && num[i] != '-') {
 			return false;
 		}
 		else if (countCom > 1) {
@@ -52,10 +68,8 @@ void PolynomialMenu()
 		case '5': PolynomialDerivative(); break;
 		case '6': PolynomialDivision(); break;
 		case '0': {
-			do {
 				system("cls");
 				return;
-			} while (choose != 'y' || choose != 'n');
 		}; break;
 		default: break;
 		}
@@ -274,7 +288,7 @@ void PolynomialMultiNumber()
 
 	printf_s("Введите число : "); cin >> num;
 
-	NumberCorrect(num);
+	NumberCorrectN(num);
 
 	number = stof(num);
 
@@ -330,10 +344,11 @@ void PolynomialDerivative()
 
 	Polynomial polDer;
 	polDer.n = pol.n - 1;
-
-	for (int i = polDer.n; i >= 0; i--) {
+	int i = polDer.n;
+	for (i; i > 0; i--) {
 		polDer.c[i] = pol.c[i + 1] * (i + 1);
 	}
+	polDer.c[0] = pol.c[1];
 
 	printf_s("Производная от многочлена: ");
 	PolynomOutput(polDer);
@@ -358,9 +373,9 @@ void PolynomialDivision()
 		else {
 			div1.n = stoi(n1);
 			div2.n = stoi(n2);
-			if (div1.n <= 0 || div1.n >= 50 || div2.n <= 0 || div2.n >= 50) system("cls");
+			if (div1.n <= 0 || div1.n >= 50 || div2.n <= 0 || div2.n >= 50 || div1.n < div2.n) system("cls");
 		}
-	} while (div1.n <= 0 || div1.n >= 50 || div2.n <= 0 || div2.n >= 50 || NumberCorrect(n1) == false || NumberCorrect(n2) == false);
+	} while (div1.n <= 0 || div1.n >= 50 || div2.n <= 0 || div2.n >= 50  || div1.n < div2.n || NumberCorrect(n1) == false || NumberCorrect(n2) == false);
 
 	do {
 		printf_s("Введите константы первого многочлена: \n");
@@ -453,21 +468,29 @@ bool PolynomInput(Polynomial &slag)
 void PolynomOutput(Polynomial& slag)
 {
 	if (slag.c[slag.n] == 1) printf_s("x^%d", slag.n);
-	else if (slag.c[slag.n] > 1 || slag.c[slag.n] < 0) printf_s("%.3lfx^%d", slag.c[slag.n], slag.n);
+	else printf_s("%.2lfx^%d", slag.c[slag.n], slag.n);
 
-	for (int i = slag.n - 1; i >= 2; i--) {
-		if (slag.c[i] > 1) printf_s("+%.3lfx^%d", slag.c[i], i);
-		else if (slag.c[i] == 1) printf_s("+x^%d", i);
-		else if (slag.c[i] < 0) printf_s("%.3lfx^%d", slag.c[i], i);
+	for (int i = slag.n - 1; i >= 0; i--) {
+		if (i == 0) {
+			if (slag.c[i] > 1) printf_s("+%.2lf\n", slag.c[0]);//Для x^0
+			else if (slag.c[i] == 1) printf_s("+1,00\n");
+			else if (slag.c[i] > 0) printf_s("+%.2lf\n", slag.c[0]);
+			else if (slag.c[i] == 0) printf_s("\n");
+			else if (slag.c[i] < 0) printf_s("%.2lf\n", slag.c[0]);
+		}
+		else if (i == 1) {
+			if (slag.c[i] > 1) printf_s("+%.2lfx", slag.c[i]);
+			else if (slag.c[i] == 1) printf_s("+x");
+			else if (slag.c[i] > 0) printf_s("+%.2lfx", slag.c[i]);
+			else if (slag.c[i] < 0) printf_s("%.2lfx", slag.c[i]);
+		}
+		else {
+			if (slag.c[i] > 1) printf_s("+%.2lfx^%d", slag.c[i], i);
+			else if (slag.c[i] == 1) printf_s("+x^%d", i);
+			else if (slag.c[i] > 0) printf_s("+%.2lfx^%d", slag.c[i], i);
+			else if (slag.c[i] < 0) printf_s("%.2lfx^%d", slag.c[i], i);
+		}
 	}
-
-	if (slag.c[1] > 1) printf_s("+%.3lfx", slag.c[1]);//Для x^1
-	else if (slag.c[1] == 1) printf_s("+x");
-	else if (slag.c[1] < 0) printf_s("%.3lfx", slag.c[1]);
-
-	if (slag.c[0] > 1) printf_s("+%.3lf\n", slag.c[0]);//Для x^0
-	else if (slag.c[0] == 1) printf_s("+1\n");
-	else if (slag.c[0] < 0) printf_s("%.3lf\n", slag.c[0]);
 }
 
 int Kor(string num)
