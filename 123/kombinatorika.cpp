@@ -10,7 +10,8 @@ void menu_kombinatorika()
 	{
 		while (true)
 		{
-			printf_s("Ограничение калькулятора от 0 до 18 446 744 073 709 551 615\n1 - Размещение с повторениями\n2 - Размещенеие без повторений\n3 - Сочетание с повторением\n4 - Сочетание без повторений\n5 - Перестановки без повторений\n6 - Постановки с повторениями\n0 - Выход в главное меню\n");
+			printf_s("Вычисление калькулятора ограничены типом double\nВыберите действие\n1 - Размещение с повторениями\n2 - Размещенеие без повторений\n3 - Сочетание с повторением\n4 - Сочетание без повторений\n5 - Перестановки без повторений\n\
+6 - Постановки с повторениями\n0 - Выход в главное меню\n>");
 			cmd = _getche();
 			if (cmd == '1' || cmd == '2' || cmd == '3' || cmd == '4' || cmd == '5' || cmd == '6' || cmd == '0')
 			{
@@ -38,7 +39,7 @@ void placement_with()
 	int i, error;
 	string tmp;
 	unsigned int n, k;
-	unsigned long long int x;
+	double x;
 	char cmd;
 
 	printf_s("Введите количество элементов n: ");
@@ -51,14 +52,15 @@ void placement_with()
 			getline(cin, tmp);
 			if (tmp.empty() || tmp.length() > 10)
 			{
-				printf_s("Неверный ввод.\n\n? : ");
+				printf_s("Пустая строка/слишком большое число.\n\nПопробуйте ещё раз: ");
 				error = 1;
+				continue;
 			}
 			while (i < tmp.length())
 			{
 				if (isdigit(tmp[i]) == 0)
 				{
-					printf_s("Неверный ввод.\n\n? : ");
+					printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 					error = 1;
 					break;
 				}
@@ -70,7 +72,7 @@ void placement_with()
 
 		if (n < 1)
 		{
-			printf_s("Неверный ввод.\n\n? : ");
+			printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 		}
 
 	} while (n < 1);
@@ -85,14 +87,15 @@ void placement_with()
 			getline(cin, tmp);
 			if (tmp.empty() || tmp.length() > 10)
 			{
-				printf_s("Неверный ввод.\n\n? : ");
+				printf_s("Пустая строка/слишком большое число.\n\nПопробуйте ещё раз: ");
 				error = 1;
+				continue;
 			}
 			while (i < tmp.length())
 			{
 				if (isdigit(tmp[i]) == 0)
 				{
-					printf_s("Неверный ввод.\n\n? : ");
+					printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 					error = 1;
 					break;
 				}
@@ -104,7 +107,7 @@ void placement_with()
 
 		if (k < 1)
 		{
-			printf_s("Неверный ввод.\n\n? : ");
+			printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 		}
 	} while (k < 1);
 
@@ -113,7 +116,7 @@ void placement_with()
 		x *= n;
 	}
 
-	printf_s("\nОтвет : %llu\n", x);
+	printf_s("\nОтвет : %.0lf\n", x);
 
 	system("pause");
 	system("cls");
@@ -125,7 +128,7 @@ void placement_without()
 	int i, error;
 	string tmp;
 	unsigned int n, k;
-	unsigned long long int x = 1, fact = 1;
+	double x = 1, fact = 1;
 	char cmd;
 	printf_s("Введите количество элементов n: ");
 	do
@@ -137,7 +140,7 @@ void placement_without()
 			getline(cin, tmp);
 			if (tmp.empty() || tmp.length() > 10)
 			{
-				printf_s("Неверный ввод.\n\n? : ");
+				printf_s("Пустая строка/слишком большое число.\n\nПопробуйте ещё раз: ");
 				error = 1;
 				continue;
 			}
@@ -145,7 +148,7 @@ void placement_without()
 			{
 				if (isdigit(tmp[i]) == 0)
 				{
-					printf_s("Неверный ввод.\n\n? : ");
+					printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 					error = 1;
 					break;
 				}
@@ -157,7 +160,7 @@ void placement_without()
 
 		if (n < 1)
 		{
-			printf_s("Неверный ввод.\n\n? : ");
+			printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 		}
 	} while (n < 1);
 
@@ -171,7 +174,7 @@ void placement_without()
 			getline(cin, tmp);
 			if (tmp.empty() || tmp.length() > 10)
 			{
-				printf_s("Неверный ввод.\n\n? : ");
+				printf_s("Пустая строка/слишком большое число.\n\nПопробуйте ещё раз: ");
 				error = 1;
 				continue;
 			}
@@ -179,7 +182,7 @@ void placement_without()
 			{
 				if (isdigit(tmp[i]) == 0)
 				{
-					printf_s("Неверный ввод.\n\n? : ");
+					printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 					error = 1;
 					break;
 				}
@@ -191,7 +194,7 @@ void placement_without()
 
 		if (k > n || k < 1)
 		{
-			printf_s("Неверный ввод.\n\n? : ");
+			printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 		}
 	} while (k > n || k < 1);
 
@@ -207,7 +210,7 @@ void placement_without()
 
 	x /= fact;
 
-	printf_s("\nОтвет : %llu\n", x);
+	printf_s("\nОтвет : %.0lf\n", x);
 
 	system("pause");
 	system("cls");
@@ -220,7 +223,7 @@ void combination_with()
 	string tmp;
 	unsigned int n, k;
 	char cmd;
-	unsigned long long int x = 1, fact1 = 1, fact2 = 1;
+	double x = 1, fact1 = 1, fact2 = 1;
 	printf_s("Введите количество n элементов множества: ");
 	do
 	{
@@ -231,7 +234,7 @@ void combination_with()
 			getline(cin, tmp);
 			if (tmp.empty() || tmp.length() > 10)
 			{
-				printf_s("Неверный ввод.\n\n? : ");
+				printf_s("Пустая строка/слишком большое число.\n\nПопробуйте ещё раз: ");
 				error = 1;
 				continue;
 			}
@@ -239,7 +242,7 @@ void combination_with()
 			{
 				if (isdigit(tmp[i]) == 0)
 				{
-					printf_s("Неверный ввод.\n\n? : ");
+					printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 					error = 1;
 					break;
 				}
@@ -251,7 +254,7 @@ void combination_with()
 
 		if (n < 1)
 		{
-			printf_s("Некорректный ввод.\n\n? : ");
+			printf_s("Некорректный ввод.\n\nПопробуйте ещё раз: ");
 		}
 	} while (n < 1);
 
@@ -265,15 +268,15 @@ void combination_with()
 			getline(cin, tmp);
 			if (tmp.empty() || tmp.length() > 10)
 			{
-				printf_s("Неверный ввод.\n\n? : ");
+				printf_s("Пустая строка/слишком большое число.\n\nПопробуйте ещё раз: ");
 				error = 1;
-				system("pause");
+				continue;
 			}
 			while (i < tmp.length())
 			{
 				if (isdigit(tmp[i]) == 0)
 				{
-					printf_s("Неверный ввод.\n\n? : ");
+					printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 					error = 1;
 					break;
 				}
@@ -285,7 +288,7 @@ void combination_with()
 
 		if (k < 1)
 		{
-			printf_s("Некорректный ввод.\n\n? : ");
+			printf_s("Некорректный ввод.\n\nПопробуйте ещё раз: ");
 		}
 	} while (k < 1);
 
@@ -306,7 +309,7 @@ void combination_with()
 
 	x /= fact1 * fact2;
 
-	printf_s("\nОтвет : %llu\n", x);
+	printf_s("\nОтвет : %.0lf\n", x);
 
 	system("pause");
 	system("cls");
@@ -317,9 +320,9 @@ void combination_without()
 	system("cls");
 	int i, error;
 	string tmp;
-	unsigned int n, k, x;
+	unsigned int n, k;
 	char cmd;
-	unsigned long long int a = 1, b = 1, c = 1;
+	double a = 1, b = 1, c = 1, x;
 	printf_s("Введите количество n элементов множества (n > 1): ");
 	do
 	{
@@ -330,7 +333,7 @@ void combination_without()
 			getline(cin, tmp);
 			if (tmp.empty() || tmp.length() > 10)
 			{
-				printf_s("Неверный ввод.\n\n? : ");
+				printf_s("Пустая строка/слишком большое число.\n\nПопробуйте ещё раз: ");
 				error = 1;
 				continue;
 			}
@@ -338,7 +341,7 @@ void combination_without()
 			{
 				if (isdigit(tmp[i]) == 0)
 				{
-					printf_s("Неверный ввод.\n\n? : ");
+					printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 					error = 1;
 					break;
 				}
@@ -350,7 +353,7 @@ void combination_without()
 
 		if (n < 2)
 		{
-			printf_s("Некорректный ввод.\n\n? : ");
+			printf_s("Некорректный ввод.\n\nПопробуйте ещё раз: ");
 		}
 	} while (n < 2);
 
@@ -364,7 +367,7 @@ void combination_without()
 			getline(cin, tmp);
 			if (tmp.empty() || tmp.length() > 10)
 			{
-				printf_s("Неверный ввод.\n\n? : ");
+				printf_s("Пустая строка/слишком большое число.\n\nПопробуйте ещё раз: ");
 				error = 1;
 				continue;
 			}
@@ -372,7 +375,7 @@ void combination_without()
 			{
 				if (isdigit(tmp[i]) == 0)
 				{
-					printf_s("Неверный ввод.\n\n? : ");
+					printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 					error = 1;
 					break;
 				}
@@ -384,32 +387,30 @@ void combination_without()
 
 		if (k >= n || k < 1)
 		{
-			printf_s("Некорректный ввод.\n\n? : ");
+			printf_s("Некорректный ввод.\n\nПопробуйте ещё раз: ");
 		}
 	} while (k < 1 || k >= n);
 
 	for (int i = 1; i <= n; i++)
 	{
 		a *= i;
-		if (i == n)
-		{
-			for (int j = 1; j <= k; j++)
-			{
-				b *= j;
-				if (j == k)
-				{
-					for (int l = 1; l <= (n - k); l++)
-					{
-						c *= l;
-					}
-				}
-			}
-		}
 	}
+
+	for (int j = 1; j <= k; j++)
+	{
+		b *= j;
+	}
+
+	for (int l = 1; l <= (n - k); l++)
+
+	{
+		c *= l;
+	}
+
 
 	x = a / (b * c);
 
-	printf_s("\nОтвет : %llu\n", x);
+	printf_s("\nОтвет : %.0lf\n", x);
 
 	system("pause");
 	system("cls");
@@ -422,7 +423,7 @@ void transposition_without()
 	string tmp;
 	unsigned int n;
 	char cmd;
-	unsigned long long int x = 1;
+	double x = 1;
 	printf_s("Введите количество элементов, входящих в перестановку: ");
 	do
 	{
@@ -433,7 +434,7 @@ void transposition_without()
 			getline(cin, tmp);
 			if (tmp.empty() || tmp.length() > 10)
 			{
-				printf_s("Неверный ввод.\n\n? : ");
+				printf_s("Пустая строка/слишком большое число.\n\nПопробуйте ещё раз: ");
 				error = 1;
 				continue;
 			}
@@ -441,7 +442,7 @@ void transposition_without()
 			{
 				if (isdigit(tmp[i]) == 0)
 				{
-					printf_s("Неверный ввод.\n\n? : ");
+					printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 					error = 1;
 					break;
 				}
@@ -453,7 +454,7 @@ void transposition_without()
 
 		if (n < 1)
 		{
-			printf_s("Некорректный ввод.\n\n? : ");
+			printf_s("Некорректный ввод.\n\nПопробуйте ещё раз: ");
 		}
 	} while (n < 1);
 
@@ -462,7 +463,7 @@ void transposition_without()
 		x *= i;
 	}
 
-	printf_s("\nОтвет : %llu\n", x);
+	printf_s("\nОтвет : %.0lf\n", x);
 
 	system("pause");
 	system("cls");
@@ -475,7 +476,7 @@ void transposition_with()
 	string tmp;
 	unsigned int n, a;
 	char cmd;
-	unsigned long long int x = 1, fact = 1, tmpF = 1;
+	double x = 1, fact = 1, tmpF = 1;
 	printf_s("Введите количество n различных элементов, входящих в перестановку: ");
 	do
 	{
@@ -486,7 +487,7 @@ void transposition_with()
 			getline(cin, tmp);
 			if (tmp.empty() || tmp.length() > 10)
 			{
-				printf_s("Неверный ввод.\n\n? : ");
+				printf_s("Пустая строка/слишком большое число.\n\nПопробуйте ещё раз: ");
 				error = 1;
 				continue;
 			}
@@ -494,7 +495,7 @@ void transposition_with()
 			{
 				if (isdigit(tmp[i]) == 0)
 				{
-					printf_s("Неверный ввод.\n\n? : ");
+					printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 					error = 1;
 					break;
 				}
@@ -506,7 +507,7 @@ void transposition_with()
 
 		if (n < 1)
 		{
-			printf_s("Некорректный ввод.\n\n? : ");
+			printf_s("Некорректный ввод.\n\nПопробуйте ещё раз: ");
 		}
 	} while (n < 1);
 
@@ -522,7 +523,7 @@ void transposition_with()
 				getline(cin, tmp);
 				if (tmp.empty() || tmp.length() > 10)
 				{
-					printf_s("Неверный ввод.\n\n? : ");
+					printf_s("Пустая строка/слишком большое число.\n\nПопробуйте ещё раз: ");
 					error = 1;
 					continue;
 				}
@@ -530,7 +531,7 @@ void transposition_with()
 				{
 					if (isdigit(tmp[i]) == 0)
 					{
-						printf_s("Неверный ввод.\n\n? : ");
+						printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 						error = 1;
 						break;
 					}
@@ -542,7 +543,7 @@ void transposition_with()
 
 			if (a < 1)
 			{
-				printf_s("неверный ввод.\n\n? : ");
+				printf_s("Неверный ввод.\n\nПопробуйте ещё раз: ");
 			}
 		} while (a < 1);
 
@@ -563,7 +564,7 @@ void transposition_with()
 	}
 
 	x = tmpF / fact;
-	printf_s("\nОтвет : %llu\n", x);
+	printf_s("\nОтвет : %.0lf\n", x);
 
 	system("pause");
 	system("cls");
