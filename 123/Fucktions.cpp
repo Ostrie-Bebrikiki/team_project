@@ -184,11 +184,11 @@ void graph(char& ch, double& a, double& b, double& c, double& d) {
 			if ((isinf(PoliF(i, A, N)) || isnan(PoliF(i, A, N))) && l < 0) i -= 0.0001;
 			else if ((isinf(PoliF(i, A, N)) || isnan(PoliF(i, A, N))) && i > 0) l += 0.0001;
 			if (PoliF(l, A, N) == 0) {
-				DrawBigNum(renderer, l, (WIDTH / 2) + (l * h) - (l * h < 0 ? 4 * HEIGHT / 200 : 0), HEIGHT / 2 + 4 * HEIGHT / 200, HEIGHT / 50);
+				DrawBigNum(renderer, l, (WIDTH / 2) + (l * h) - (l * h < 0 ? 5 * HEIGHT / 200 : 0), HEIGHT / 2 + 4 * HEIGHT / 200, HEIGHT / 50);
 				SDL_RenderDrawLine(renderer, (WIDTH / 2) + (l * h), HEIGHT / 2 - HEIGHT / 100, (WIDTH / 2) + (l * h), HEIGHT / 2 + HEIGHT / 100);
 			}
 			if (PoliF(l, A, N) * PoliF(i, A, N) < 0) {
-				DrawBigNum(renderer, PoliDih(false, l, i, A, N), (WIDTH / 2) + (PoliDih(false, l, i, A, N) * h) - (PoliDih(false, l, i, A, N) * h < 0 ? 4 * HEIGHT / 200 : 0), HEIGHT / 2 + 4 * HEIGHT / 200, HEIGHT / 50);
+				DrawBigNum(renderer, PoliDih(false, l, i, A, N), (WIDTH / 2) + (PoliDih(false, l, i, A, N) * h) - (PoliDih(false, l, i, A, N) * h < 0 ? 5 * HEIGHT / 200 : 0), HEIGHT / 2 + 4 * HEIGHT / 200, HEIGHT / 50);
 				SDL_RenderDrawLine(renderer, (WIDTH / 2) + (PoliDih(false, l, i, A, N) * h), HEIGHT / 2 - HEIGHT / 100, (WIDTH / 2) + (PoliDih(false, l, i, A, N) * h), HEIGHT / 2 + HEIGHT / 100);
 			}
 		}
@@ -196,11 +196,11 @@ void graph(char& ch, double& a, double& b, double& c, double& d) {
 			if ((isinf(f(ch, i, a, b, c, d)) || isnan(f(ch, i, a, b, c, d))) && l < 0) i -= 0.0001;
 			else if ((isinf(f(ch, l, a, b, c, d)) || isnan(f(ch, l, a, b, c, d))) && i > 0) l += 0.0001;
 			if (f(ch, l, a, b, c, d) == 0) {
-				DrawBigNum(renderer, l, (WIDTH / 2) + (l * h) - (l * h < 0 ? 4 * HEIGHT / 200 : 0), HEIGHT / 2 + 4 * HEIGHT / 200, HEIGHT / 50);
+				DrawBigNum(renderer, l, (WIDTH / 2) + (l * h) - (l * h < 0 ? 6 * HEIGHT / 200 : 0), HEIGHT / 2 + 4 * HEIGHT / 200, HEIGHT / 50);
 				SDL_RenderDrawLine(renderer, (WIDTH / 2) + (l * h), HEIGHT / 2 - HEIGHT / 100, (WIDTH / 2) + (l * h), HEIGHT / 2 + HEIGHT / 100);
 			}
 			if (f(ch, l, a, b, c, d) * f(ch, i, a, b, c, d) < 0) {
-				DrawBigNum(renderer, dih(false, ch, l, i, a, b, c, d), (WIDTH / 2) + (dih(false, ch, l, i, a, b, c, d) * h) - (dih(false, ch, l, i, a, b, c, d) < 0 ? 4 * HEIGHT / 200 : 0), HEIGHT / 2 + 4 * HEIGHT / 200, HEIGHT / 50);
+				DrawBigNum(renderer, dih(false, ch, l, i, a, b, c, d), (WIDTH / 2) + (dih(false, ch, l, i, a, b, c, d) * h) - (dih(false, ch, l, i, a, b, c, d) < 0 ? 5 * HEIGHT / 200 : 0), HEIGHT / 2 + 4 * HEIGHT / 200, HEIGHT / 50);
 				SDL_RenderDrawLine(renderer, (WIDTH / 2) + (dih(false, ch, l, i, a, b, c, d) * h), HEIGHT / 2 - HEIGHT / 100, (WIDTH / 2) + (dih(false, ch, l, i, a, b, c, d) * h), HEIGHT / 2 + HEIGHT / 100);
 			}
 		}

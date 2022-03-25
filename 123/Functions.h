@@ -222,7 +222,7 @@ int DrawNum(SDL_Renderer* renderer, char &num, int32_t centreX, int32_t centreY,
 void DrawBigNum(SDL_Renderer* renderer, double num, int32_t centreX, int32_t centreY, int h) {
 	int hi = 0;
 	stringstream ss;
-	num = int(num * 10)/10.0f;
+	num = int(num * 100)/100.0f;
 	ss << num;
 	string str = ss.str();
 	for (int i = 0; i < str.length(); i++) {
