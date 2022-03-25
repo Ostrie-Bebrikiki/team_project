@@ -149,7 +149,7 @@ void MenuMatrix()
                 }
                 else cout << "ќпределитель матрицы равен 0, обратную матрицу найти нельз€" << endl;
             }
-            else cout << "ћатрица не квадратна€ , найти обратную невозможно" << endl;
+            else cout << "ћатрица не квадратна€, найти обратную невозможно" << endl;
         }
 
         if (choose == '0')
@@ -157,6 +157,7 @@ void MenuMatrix()
             return;
         }
 
+        cout << endl;
         system("pause");
     }
 }
@@ -283,7 +284,7 @@ void DiffMatrix(int n, int m, double** A) {
     }
 
     if (nb != n || mb != m) {
-        cout << "—овершить вычитание невозможно , размеры матриц не равны";
+        cout << "—овершить вычитание невозможно, размеры матриц не равны";
     }
     else
     {
@@ -308,7 +309,7 @@ void SummMartrix(int n, int m, double** A) {
     }
 
     if (nb != n || mb != m) {
-        cout << "—овершить сложение невозможно , размеры матриц не равны";
+        cout << "—овершить сложение невозможно, размеры матриц не равны";
 
     }
     else
@@ -366,7 +367,7 @@ void MultiplMatrix(int n, int m, double** A) {
 void MultiplNumber(int n, int m, double** A) {
     int nb, mb; // ƒл€ умножени€ матриц
     double number;
-    cout << "¬ведите число , на которое собираетесь умножить: ";
+    cout << "¬ведите число, на которое собираетесь умножить: ";
     cin >> number;
     cin.clear();
     while (cin.get() != '\n');
@@ -384,7 +385,7 @@ void MultiplNumber(int n, int m, double** A) {
 void SummNumber(int n, int m, double** A) {
     int nb, mb; // ƒл€ умножени€ матриц
     double number;
-    cout << "¬ведите число , с которым собираетесь складывать: ";
+    cout << "¬ведите число, с которым собираетесь складывать: ";
     cin >> number;
     cin.clear();
     while (cin.get() != '\n');
