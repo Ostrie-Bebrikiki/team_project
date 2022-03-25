@@ -373,9 +373,9 @@ void PolynomialDivision()
 		else {
 			div1.n = stoi(n1);
 			div2.n = stoi(n2);
-			if (div1.n <= 0 || div1.n >= 50 || div2.n <= 0 || div2.n >= 50) system("cls");
+			if (div1.n <= 0 || div1.n >= 50 || div2.n <= 0 || div2.n >= 50 || div1.n < div2.n) system("cls");
 		}
-	} while (div1.n <= 0 || div1.n >= 50 || div2.n <= 0 || div2.n >= 50 || NumberCorrect(n1) == false || NumberCorrect(n2) == false);
+	} while (div1.n <= 0 || div1.n >= 50 || div2.n <= 0 || div2.n >= 50  || div1.n < div2.n || NumberCorrect(n1) == false || NumberCorrect(n2) == false);
 
 	do {
 		printf_s("Введите константы первого многочлена: \n");
@@ -468,23 +468,27 @@ bool PolynomInput(Polynomial &slag)
 void PolynomOutput(Polynomial& slag)
 {
 	if (slag.c[slag.n] == 1) printf_s("x^%d", slag.n);
-	else if (slag.c[slag.n] > 1 || slag.c[slag.n] < 0) printf_s("%.1lfx^%d", slag.c[slag.n], slag.n);
+	else printf_s("%.2lfx^%d", slag.c[slag.n], slag.n);
 
 	for (int i = slag.n - 1; i >= 0; i--) {
 		if (i == 0) {
-			if (slag.c[i] > 1) printf_s("+%.1lf\n", slag.c[0]);//Для x^0
-			else if (slag.c[i] == 1) printf_s("+1\n");
-			else if (slag.c[i] < 0) printf_s("%.1lf\n", slag.c[0]);
+			if (slag.c[i] > 1) printf_s("+%.2lf\n", slag.c[0]);//Для x^0
+			else if (slag.c[i] == 1) printf_s("+1,00\n");
+			else if (slag.c[i] > 0) printf_s("+%.2lf\n", slag.c[0]);
+			else if (slag.c[i] == 0) printf_s("\n");
+			else if (slag.c[i] < 0) printf_s("%.2lf\n", slag.c[0]);
 		}
 		else if (i == 1) {
-			if (slag.c[i] > 1) printf_s("+%.1lfx", slag.c[i]);
+			if (slag.c[i] > 1) printf_s("+%.2lfx", slag.c[i]);
 			else if (slag.c[i] == 1) printf_s("+x");
-			else if (slag.c[i] < 0) printf_s("%.1lfx", slag.c[i]);
+			else if (slag.c[i] > 0) printf_s("+%.2lfx", slag.c[i]);
+			else if (slag.c[i] < 0) printf_s("%.2lfx", slag.c[i]);
 		}
 		else {
-			if (slag.c[i] > 1) printf_s("+%.1lfx^%d", slag.c[i], i);
+			if (slag.c[i] > 1) printf_s("+%.2lfx^%d", slag.c[i], i);
 			else if (slag.c[i] == 1) printf_s("+x^%d", i);
-			else if (slag.c[i] < 0) printf_s("%.1lfx^%d", slag.c[i], i);
+			else if (slag.c[i] > 0) printf_s("+%.2lfx^%d", slag.c[i], i);
+			else if (slag.c[i] < 0) printf_s("%.2lfx^%d", slag.c[i], i);
 		}
 	}
 }
